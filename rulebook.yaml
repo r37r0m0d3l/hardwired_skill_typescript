@@ -1,0 +1,46 @@
+schema_version: 1
+name: skill-typescript
+description: Opinionated TypeScript rules usable as a shared skill.
+
+# Single source of truth (canonical rules live there)
+source_of_truth: principles.md
+
+instructions_markdown: |-
+  Follow `principles.md` as the single source of truth.
+  If a rule conflicts with explicit project requirements, project requirements win.
+  Keep `CLAUDE.md`, `.github/copilot-instructions.md`, and `rulebook.yaml` aligned with `principles.md`.
+
+files:
+  - .github/copilot-instructions.md
+  - CLAUDE.md
+  - principles.md
+  - rules/alternative_to_enum.md
+  - rules/ban_loose_types.md
+  - rules/ban_namespace_or_module.md
+  - rules/ban_non_null_assertion.md
+  - rules/configuration_tsconfig.md
+  - rules/discretion_branded_types.md
+  - rules/discretion_interface_vs_type.md
+  - rules/force_control_flow_braces.md
+  - rules/force_explicit_return_type_annotations.md
+  - rules/force_template_literal_types.md
+  - rules/prefer_composing_types_over_duplicating_object_shapes.md
+  - rules/prefer_discriminated_unions.md
+  - rules/prefer_satisfies_over_as.md
+  - rules/prefer_type_definitions_over_type_inference.md
+  - rules/prefer_unknown_over_any.md
+  - rules/typing_array.md
+  - rules/typing_async.md
+  - rules/typing_error_handling.md
+  - rules/typing_from_constants.md
+  - rules/typing_generics_that_infer_automatically.md
+  - rules/typing_return_type.md
+  - rules/typing_utilities.md
+  - rules/use_as_const.md
+  - rules/use_class_modifiers.md
+  - rules/use_exhaustive_switch.md
+  - rules/use_explicit_naming_and_typing.md
+  - rules/use_import_of_native_modules.md
+  - rules/use_readonly_where_possible.md
+  - rules/validate_at_runtime.md
+  - rules/validate_with_never.md
