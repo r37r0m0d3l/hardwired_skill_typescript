@@ -1,0 +1,57 @@
+{
+	"bin": {
+		"hardwired-install-typescript": "./bin/install.js"
+	},
+	"description": "Opinionated TypeScript rules designed to be reused as a shared skill or injected directly into your project's AI instruction files.",
+	"devDependencies": {
+		"markdownlint-cli2": "^0.22.1",
+		"prettier": "^3.8.4",
+		"tar": "^7.5.16"
+	},
+	"engines": {
+		"node": ">=26.1.0"
+	},
+	"files": [
+		".github",
+		"AGENTS.md",
+		"CLAUDE.md",
+		"README.md",
+		"bin/",
+		"principles.md",
+		"rulebook.yaml",
+		"rules/"
+	],
+	"keywords": [
+		"agent",
+		"ai",
+		"ai-instructions",
+		"claude",
+		"cli",
+		"code-style",
+		"coding-standards",
+		"copilot",
+		"cursor",
+		"developer-experience",
+		"llm",
+		"rules",
+		"skill",
+		"system-prompt",
+		"typescript"
+	],
+	"name": "@hardwired/skill-typescript",
+	"private": false,
+	"scripts": {
+		"format": "prettier --write \"rules/**/*.md\" \"bin/*.js\" \"*.md\"",
+		"format:check": "prettier --check \"rules/**/*.md\" \"bin/*.js\" \"*.md\"",
+		"lint:md": "markdownlint-cli2 \"rules/**/*.md\" \"*.md\"",
+		"test": "npm run test:all",
+		"test:agentdir": "node test/agentdir/agentdir.spec.js",
+		"test:agentsmd": "node test/agentsmd/agentsmd.spec.js",
+		"test:all": "node test/all/all.spec.js",
+		"test:claudemd": "node test/claudemd/claudemd.spec.js",
+		"test:cleanup": "node test/utils/cleanup-runner.mjs",
+		"test:copilotdir": "node test/copilotdir/copilotdir.spec.js"
+	},
+	"type": "module",
+	"version": "1.0.0"
+}
