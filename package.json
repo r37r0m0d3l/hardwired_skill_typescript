@@ -44,7 +44,7 @@
     "typescript"
   ],
   "license": "MIT",
-  "name": "@hardwired/skill-typescript",
+  "name": "hardwired-skill-typescript",
   "private": false,
   "repository": {
     "type": "git",

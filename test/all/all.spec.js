@@ -17,14 +17,14 @@ const ctx = makeContext(testDir);
 
 		assertInstalledPackage(ctx.testDir);
 
-		const internalPrinciplesPath = "./.github/skills/@hardwired/skill-typescript/principles.md";
+		const internalPrinciplesPath = "./.github/skills/hardwired-skill-typescript/principles.md";
 		const publicRouterPath = "./.agent/rules/hardwired-typescript.md";
 
 		assertFileContains(path.join(ctx.testDir, ".github", "copilot-instructions.md"), internalPrinciplesPath, ".github/copilot-instructions.md");
 		assertFileContains(path.join(ctx.testDir, ".agent", "rules", "hardwired-typescript.md"), internalPrinciplesPath, ".agent/rules/hardwired-typescript.md");
 		assertFileContains(path.join(ctx.testDir, "AGENTS.md"), publicRouterPath, "AGENTS.md");
 		assertFileContains(path.join(ctx.testDir, "CLAUDE.md"), publicRouterPath, "CLAUDE.md");
-		assertFileExists(path.join(ctx.testDir, ".github", "skills", "@hardwired", "skill-typescript", "principles.md"), "Installed principles file");
+		assertFileExists(path.join(ctx.testDir, ".github", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
 		console.log("Install all: SUCCESS — installed files left in test folder.");
 	} catch (error) {

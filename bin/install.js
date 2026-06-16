@@ -6,8 +6,7 @@ import {createInterface} from "node:readline/promises";
 import {stdin as input, stdout as output} from "node:process";
 import {parseArgs} from "node:util";
 
-const ROOT_NAMESPACE = "hardwired";
-const SKILL_NAME = `@${ROOT_NAMESPACE}/skill-typescript`;
+const SKILL_NAME = "hardwired-skill-typescript";
 
 let requiredNodeVersion = "18.0.0";
 try {
@@ -50,7 +49,7 @@ class SkillInstaller {
 		this.hasErrors = false;
 
 		this.paths = {
-			agentdir: join(this.cwd, ".agent", "rules", `${ROOT_NAMESPACE}-typescript.md`),
+			agentdir: join(this.cwd, ".agent", "rules", `${SKILL_NAME}.md`),
 			agentsmd: join(this.cwd, "AGENTS.md"),
 			claudemd: join(this.cwd, "CLAUDE.md"),
 			copilotdir: join(this.cwd, ".github", "copilot-instructions.md"),
@@ -317,7 +316,7 @@ class SkillInstaller {
 		this.ensureDir(vendorTargetDir);
 		this.transferFiles(vendorTargetDir);
 
-		const publicRouterPath = installAgentDir ? `./.agent/rules/${ROOT_NAMESPACE}-typescript.md` : internalPrinciplesPath;
+		const publicRouterPath = installAgentDir ? `./.agent/rules/${SKILL_NAME}.md` : internalPrinciplesPath;
 
 		const encodedPublicRouterPath = encodeURI(publicRouterPath);
 		const encodedInternalPrinciplesPath = encodeURI(internalPrinciplesPath);
@@ -325,7 +324,7 @@ class SkillInstaller {
 		const templates = {
 			agentdir: `# Strict TypeScript Architectural Rules\n\nCRITICAL: You must read, interpret, and strictly follow the principles defined in:\n- [TypeScript Core Principles](${encodedInternalPrinciplesPath})`,
 			agentsmd: `- [TypeScript Coding Principles](${encodedPublicRouterPath})`,
-			claudemd: `- [TypeScript Skill from ${ROOT_NAMESPACE}](${encodedPublicRouterPath})`,
+			claudemd: `- [TypeScript Skill from ${SKILL_NAME}](${encodedPublicRouterPath})`,
 			copilotdir: `\n# TypeScript Coding Standards\nCRITICAL: Follow the principles defined in:\n- ${encodedInternalPrinciplesPath}`,
 		};
 

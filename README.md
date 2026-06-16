@@ -1,8 +1,8 @@
 # 🛠️ TypeScript Skill
 
-[![npm version](https://img.shields.io/npm/v/@hardwired/skill-typescript.svg)](https://www.npmjs.com/package/@hardwired/skill-typescript)
-[![License](https://img.shields.io/npm/l/@hardwired/skill-typescript.svg)](LICENSE)
-[![Node](https://img.shields.io/node/v/@hardwired/skill-typescript.svg)](package.json)
+[![npm version](https://img.shields.io/npm/v/hardwired-skill-typescript.svg)](https://www.npmjs.com/package/hardwired-skill-typescript)
+[![License](https://img.shields.io/npm/l/hardwired-skill-typescript.svg)](LICENSE)
+[![Node](https://img.shields.io/node/v/hardwired-skill-typescript.svg)](package.json)
 
 > Opinionated TypeScript rules designed to be reused as a shared skill or injected directly into your project's AI instruction files.
 
@@ -23,7 +23,7 @@ A reusable, configurable skill that injects strict TypeScript coding rules into 
 Add the package as a development dependency to your project:
 
 ```shell
-npm install -D @hardwired/skill-typescript
+npm install -D hardwired-skill-typescript
 ```
 
 ### Step 2: Run the installer

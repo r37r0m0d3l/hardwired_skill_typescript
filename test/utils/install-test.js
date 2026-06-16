@@ -36,7 +36,7 @@ export async function installPackedArchive(ctx, repoRoot) {
 	fs.mkdirSync(ctx.extractDir, {recursive: true});
 	await tar.x({file: ctx.destPacked, cwd: ctx.extractDir});
 	const packageDir = path.join(ctx.extractDir, "package");
-	const targetDir = path.join(ctx.testDir, "node_modules", "@hardwired", "skill-typescript");
+	const targetDir = path.join(ctx.testDir, "node_modules", "hardwired-skill-typescript");
 	fs.mkdirSync(path.dirname(targetDir), {recursive: true});
 	try {
 		fs.rmSync(targetDir, {recursive: true, force: true});
@@ -49,7 +49,7 @@ export async function installPackedArchive(ctx, repoRoot) {
 	const binDir = path.join(ctx.testDir, "node_modules", ".bin");
 	fs.mkdirSync(binDir, {recursive: true});
 	const cmdShim = path.join(binDir, "hardwired-install-typescript.cmd");
-	const cmdContent = `@echo off\nnode "%~dp0\\..\\@hardwired\\skill-typescript\\bin\\install.js" %*\n`;
+	const cmdContent = `@echo off\nnode "%~dp0\\..\\hardwired-skill-typescript\\bin\\install.js" %*\n`;
 	fs.writeFileSync(cmdShim, cmdContent);
 	const shShim = path.join(binDir, "hardwired-install-typescript");
 	fs.writeFileSync(shShim, "#!/usr/bin/env node\nconsole.log('shim');\n");
@@ -71,7 +71,7 @@ export async function installPackedArchive(ctx, repoRoot) {
 export function assertInstalledPackage(testDir) {
 	const nodeModules = path.join(testDir, "node_modules");
 	if (!fs.existsSync(nodeModules)) throw new Error(`node_modules not found in test folder: ${nodeModules}`);
-	const installedPackage = path.join(nodeModules, "@hardwired", "skill-typescript");
+	const installedPackage = path.join(nodeModules, "hardwired-skill-typescript");
 	if (!fs.existsSync(installedPackage)) throw new Error(`Installed package not found: ${installedPackage}`);
 	const binPath = path.join(nodeModules, ".bin", "hardwired-install-typescript");
 	const binPathCmd = binPath + ".cmd";

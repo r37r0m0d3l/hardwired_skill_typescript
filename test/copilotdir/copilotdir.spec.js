@@ -17,9 +17,9 @@ const ctx = makeContext(testDir);
 
 		assertInstalledPackage(ctx.testDir);
 
-		const installedPrinciplesPath = "./.github/skills/@hardwired/skill-typescript/principles.md";
+		const installedPrinciplesPath = "./.github/skills/hardwired-skill-typescript/principles.md";
 		assertFileContains(path.join(ctx.testDir, ".github", "copilot-instructions.md"), installedPrinciplesPath, ".github/copilot-instructions.md");
-		assertFileExists(path.join(ctx.testDir, ".github", "skills", "@hardwired", "skill-typescript", "principles.md"), "Installed principles file");
+		assertFileExists(path.join(ctx.testDir, ".github", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
 		console.log("Install `.github` directory: SUCCESS — installed files left in test folder.");
 	} catch (error) {
