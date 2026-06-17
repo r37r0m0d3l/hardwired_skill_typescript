@@ -1,4 +1,4 @@
-## Use `as const` for Configuration and Constants
+# Use `as const` for Configuration and Constants
 
 **Title:**
 

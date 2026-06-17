@@ -119,10 +119,7 @@ class SkillInstaller {
 						rmSync(dest, {force: true});
 					}
 				} catch (unlinkErr) {
-					console.warn(
-						`[${this.skillName}] Warning: Failed to remove existing path for ${rel} (${dest}):`,
-						unlinkErr && unlinkErr.message ? unlinkErr.message : unlinkErr,
-					);
+					console.warn(`[${this.skillName}] Warning: Failed to remove existing path for ${rel} (${dest}):`, unlinkErr && unlinkErr.message ? unlinkErr.message : unlinkErr);
 					this.hasErrors = true;
 				}
 			}

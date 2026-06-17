@@ -1,5 +1,6 @@
 {
   "config": {
+    "MD010": false, // No hard tabs
     "MD013": false, // Disable line length rule so Prettier can manage wrap widths
     "MD033": false  // Allows you to keep your markdown comments intact if needed
   }
