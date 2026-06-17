@@ -1,0 +1,11 @@
+# 📝 Changelog
+
+[1.0.1]
+
+## ✨ Added
+
+- 📄 Add documentation.
+
+[1.0.0]
+
+- Initial release.
