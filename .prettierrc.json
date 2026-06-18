@@ -2,15 +2,15 @@
   "$schema": "https://json.schemastore.org/prettierrc",
   "arrowParens": "always",
   "bracketSameLine": false,
-  "bracketSpacing": false,
+  "bracketSpacing": true,
   "endOfLine": "lf",
   "jsxSingleQuote": false,
   "printWidth": 200,
-  "quoteProps": "as-needed",
+  "quoteProps": "preserve",
   "semi": true,
   "singleAttributePerLine": true,
   "singleQuote": false,
-  "tabWidth": 2,
+  "tabWidth": 3,
   "trailingComma": "all",
   "useTabs": true
 }

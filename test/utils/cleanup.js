@@ -18,11 +18,11 @@ export function cleanup(ctx) {
 		return;
 	}
 	try {
-		const {createdTestPkg, testPkg, destPacked, src, nodeModules, extractDir, testDir} = ctx;
+		const { createdTestPkg, testPkg, destPacked, src, nodeModules, extractDir, testDir } = ctx;
 
 		if (createdTestPkg && testPkg && fs.existsSync(testPkg)) {
 			try {
-				fs.rmSync(testPkg, {force: true});
+				fs.rmSync(testPkg, { force: true });
 				console.log(`Removed test package.json: ${testPkg}`);
 			} catch (_error) {
 				// ignore errors removing test package
@@ -31,7 +31,7 @@ export function cleanup(ctx) {
 
 		if (destPacked && fs.existsSync(destPacked)) {
 			try {
-				fs.rmSync(destPacked, {force: true});
+				fs.rmSync(destPacked, { force: true });
 				console.log(`Removed copied packed archive: ${destPacked}`);
 			} catch (_error) {
 				// ignore errors removing packed archive
@@ -40,7 +40,7 @@ export function cleanup(ctx) {
 
 		if (src && fs.existsSync(src)) {
 			try {
-				fs.rmSync(src, {force: true});
+				fs.rmSync(src, { force: true });
 				console.log(`Removed repo packed archive: ${src}`);
 			} catch (_error) {
 				// ignore if unable to remove (permissions or other tooling expects it)
@@ -50,7 +50,7 @@ export function cleanup(ctx) {
 		const nm = nodeModules || path.join(testDir || ".", "node_modules");
 		if (fs.existsSync(nm)) {
 			try {
-				fs.rmSync(nm, {recursive: true, force: true});
+				fs.rmSync(nm, { recursive: true, force: true });
 				console.log(`Removed test node_modules: ${nm}`);
 			} catch (_error) {
 				// ignore errors during node_modules removal
@@ -59,7 +59,7 @@ export function cleanup(ctx) {
 
 		if (extractDir && fs.existsSync(extractDir)) {
 			try {
-				fs.rmSync(extractDir, {recursive: true, force: true});
+				fs.rmSync(extractDir, { recursive: true, force: true });
 				console.log(`Removed extract dir: ${extractDir}`);
 			} catch (_error) {
 				// ignore errors during extract dir removal
@@ -67,13 +67,13 @@ export function cleanup(ctx) {
 		}
 
 		// Remove generated files and directories created by installation
-		const generated = ["AGENTS.md", "CLAUDE.md", ".agent", ".github"];
+		const generated = ["AGENTS.md", "CLAUDE.md", "CURSOR.md", ".agent", ".cursor", ".github"];
 		for (const name of generated) {
-			const p = path.join(testDir || ".", name);
-			if (fs.existsSync(p)) {
+			const pathToTestDir = path.join(testDir || ".", name);
+			if (fs.existsSync(pathToTestDir)) {
 				try {
-					fs.rmSync(p, {recursive: true, force: true});
-					console.log(`Removed generated item: ${p}`);
+					fs.rmSync(pathToTestDir, { recursive: true, force: true });
+					console.log(`Removed generated item: ${pathToTestDir}`);
 				} catch (_error) {
 					// ignore
 				}

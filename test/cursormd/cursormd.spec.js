@@ -13,17 +13,17 @@ const ctx = makeContext(testDir);
 (async () => {
 	try {
 		await installPackedArchive(ctx, repoRoot);
-		run("npx hardwired-install-typescript --copilotdir", { cwd: ctx.testDir });
+		run("npx hardwired-install-typescript --cursormd", { cwd: ctx.testDir });
 
 		assertInstalledPackage(ctx.testDir);
 
-		const installedPrinciplesPath = "./.github/skills/hardwired-skill-typescript/principles.md";
-		assertFileContains(path.join(ctx.testDir, ".github", "copilot-instructions.md"), installedPrinciplesPath, ".github/copilot-instructions.md");
-		assertFileExists(path.join(ctx.testDir, ".github", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
+		const installedPrinciplesPath = "./.agent/skills/hardwired-skill-typescript/principles.md";
+		assertFileContains(path.join(ctx.testDir, "CURSOR.md"), installedPrinciplesPath, "CURSOR.md");
+		assertFileExists(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
-		console.log("Install `.github` directory: SUCCESS — installed files left in test folder.");
+		console.log("Install `CURSOR.md`: SUCCESS — installed files left in test folder.");
 	} catch (error) {
-		console.error("Install `.github` directory: FAILED", error && error.message ? error.message : error);
+		console.error("Install `CURSOR.md`: FAILED", error && error.message ? error.message : error);
 		process.exitCode = 1;
 	} finally {
 		cleanup(ctx);

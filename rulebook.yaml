@@ -8,16 +8,19 @@ source_of_truth: principles.md
 instructions_markdown: |-
   Follow `principles.md` as the single source of truth.
   If a rule conflicts with explicit project requirements, project requirements win.
-  Keep `CLAUDE.md`, `.github/copilot-instructions.md`, and `rulebook.yaml` aligned with `principles.md`.
+  Keep `AGENTS.md`, `CLAUDE.md`, `CURSOR.md`, `.github/copilot-instructions.md`, and `rulebook.yaml` aligned with `principles.md`.
 
 files:
   - .github/copilot-instructions.md
+  - AGENTS.md
   - CLAUDE.md
+  - CURSOR.md
   - principles.md
   - rules/alternative_to_enum.md
   - rules/ban_loose_types.md
   - rules/ban_namespace_or_module.md
   - rules/ban_non_null_assertion.md
+  - rules/ban_single_letter_variables.md
   - rules/configuration_tsconfig.md
   - rules/discretion_branded_types.md
   - rules/discretion_interface_vs_type.md

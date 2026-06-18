@@ -1,7 +1,7 @@
 import path from "node:path";
-import {fileURLToPath} from "node:url";
-import {makeContext, cleanup} from "../utils/cleanup.js";
-import {assertFileContains, assertFileExists, assertInstalledPackage, installPackedArchive, run} from "../utils/install-test.js";
+import { fileURLToPath } from "node:url";
+import { makeContext, cleanup } from "../utils/cleanup.js";
+import { assertFileContains, assertFileExists, assertInstalledPackage, installPackedArchive, run } from "../utils/install-test.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +13,7 @@ const ctx = makeContext(testDir);
 (async () => {
 	try {
 		await installPackedArchive(ctx, repoRoot);
-		run("npx hardwired-install-typescript --agentsmd", {cwd: ctx.testDir});
+		run("npx hardwired-install-typescript --agentsmd", { cwd: ctx.testDir });
 
 		assertInstalledPackage(ctx.testDir);
 

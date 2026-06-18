@@ -61,7 +61,7 @@ type Repository<T> = {
 interface ApiResponse {
 	data: unknown;
 }
-type ApiResponse2 = {data: unknown}; // same shape, no reason to differ
+type ApiResponse2 = { data: unknown }; // same shape, no reason to differ
 ```
 
 ## ✅ GOOD
@@ -86,7 +86,7 @@ class UserRepository implements Repository<User> {
 type Status = "active" | "inactive" | "pending";
 
 // type for a mapped type transformation.
-type Nullable<T> = {[K in keyof T]: T[K] | null};
+type Nullable<T> = { [K in keyof T]: T[K] | null };
 
 // type for a conditional type.
 type NonNullable<T> = T extends null | undefined ? never : T;

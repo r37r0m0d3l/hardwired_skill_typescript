@@ -64,8 +64,8 @@ getOrdersForUser(oid, uid); // ← wrong order, no error
 
 ```typescript
 // Branded type — structurally incompatible with other string brands.
-type UserId = string & {readonly _brand: "UserId"};
-type OrderId = string & {readonly _brand: "OrderId"};
+type UserId = string & { readonly _brand: "UserId" };
+type OrderId = string & { readonly _brand: "OrderId" };
 
 // Factory functions centralise validation and branding.
 function toUserId(raw: string): UserId {
