@@ -51,7 +51,7 @@ const user = (await response.json()) as User;
 
 ```typescript
 // Uses an explicit runtime schema verification step to catch data anomalies.
-import {z} from "zod";
+import { z } from "zod";
 
 const UserSchema = z.object({
 	id: z.string(),

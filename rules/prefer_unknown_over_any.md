@@ -75,7 +75,7 @@ function parseJson(input: string): unknown {
 	return JSON.parse(input) as unknown;
 }
 
-function isUser(value: unknown): value is {id: string} {
+function isUser(value: unknown): value is { id: string } {
 	return typeof value === "object" && value !== null && "id" in value;
 }
 

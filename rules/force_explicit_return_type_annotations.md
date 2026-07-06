@@ -43,7 +43,7 @@
 ```typescript
 // Omitting the return type forces the compiler to infer it, which can leak internal details or slow down static analysis.
 export const fetchUserData = (userId: string) => {
-	return prisma.user.findUnique({where: {id: userId}});
+	return prisma.user.findUnique({ where: { id: userId } });
 };
 
 export function handleRequest(req: Request, res: Response) {
@@ -56,7 +56,7 @@ export function handleRequest(req: Request, res: Response) {
 ```typescript
 // Explicitly stating the return types locks down contracts and speeds up the compiler's type evaluation.
 export const fetchUserData = (userId: string): Promise<User | null> => {
-	return prisma.user.findUnique({where: {id: userId}});
+	return prisma.user.findUnique({ where: { id: userId } });
 };
 
 export function handleRequest(req: Request, res: Response): void {

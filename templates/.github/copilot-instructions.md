@@ -9,10 +9,11 @@
 
 # Using the skill rules
 
-- **Read `principles.md` as the table of contents** — it lists all core rules with links.
+- **Read the core principles file as the table of contents** — it lists all core rules with links:
+	- {{PRIMARY_INTERNAL_PRINCIPLES}}
 - **Each rule is documented in `./rules/`** — refer to specific rule files for detailed explanations and examples.
 - When applying TypeScript guidelines, consult the relevant rule document for context and best practices.
 
 # Quick guardrails (summary)
 
-This is a non-exhaustive summary. Always prefer `principles.md` and the detailed rule documents in `./rules/`.
+This is a non-exhaustive summary. Always prefer the absolute mapping definitions outlined in {{PRIMARY_INTERNAL_PRINCIPLES}} and the detailed rule documents in `./rules/`.

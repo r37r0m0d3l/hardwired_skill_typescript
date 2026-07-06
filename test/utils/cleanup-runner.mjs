@@ -1,6 +1,6 @@
 import path from "node:path";
-import {fileURLToPath} from "node:url";
-import {makeContext, cleanup} from "./cleanup.js";
+import { fileURLToPath } from "node:url";
+import { makeContext, cleanup } from "./cleanup.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,10 +12,10 @@ async function runDir(testDir) {
 		console.log(`Running cleanup for: ${testDir}`);
 		const ctx = await makeContext(testDir);
 		await cleanup(ctx);
-		return {ok: true, testDir};
+		return { ok: true, testDir };
 	} catch (error) {
 		console.error(`Cleanup failed for ${testDir}:`, error && error.stack ? error.stack : error);
-		return {ok: false, testDir};
+		return { ok: false, testDir };
 	}
 }
 

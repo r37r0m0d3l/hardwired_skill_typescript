@@ -63,7 +63,7 @@ function handleResult(result: Result) {
 
 ```typescript
 // Uses a explicit literal discriminator property ("kind") to clearly separate states.
-type Result = {kind: "ok"; value: string} | {kind: "error"; message: string};
+type Result = { kind: "ok"; value: string } | { kind: "error"; message: string };
 
 function handleResult(result: Result) {
 	// TypeScript perfectly narrows the specific object shape inside each switch branch

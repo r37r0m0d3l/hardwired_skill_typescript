@@ -6,7 +6,7 @@ If a rule conflicts with explicit project requirements, project requirements win
 ## Scope / How to use
 
 - This document (`principles.md`) is the **single source of truth**.
-- If you need to change rules, **edit this file first**, then update `CLAUDE.md`, `.github/copilot-instructions.md`, and
+- If you need to change rules, **edit this file first**, then update `AGENTS.md`, `CLAUDE.md`, `CURSOR.md`, `.github/copilot-instructions.md`, and
   `rulebook.yaml` to match.
 
 ## Core Rules
@@ -15,6 +15,7 @@ If a rule conflicts with explicit project requirements, project requirements win
 - [Async / Promise Typing](./rules/typing_async.md)
 - [Avoid Loose Types (`Function`, `object`, `{}`)](./rules/ban_loose_types.md)
 - [Avoid Non-Null Assertion (`!`)](./rules/ban_non_null_assertion.md)
+- [Avoid Single-Letter Variable Names](./rules/ban_single_letter_variables.md)
 - [Branded / Nominal Types](./rules/discretion_branded_types.md)
 - [Class Modifiers](./rules/use_class_modifiers.md)
 - [Derive Types From Values](./rules/typing_from_constants.md)

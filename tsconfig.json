@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"exactOptionalPropertyTypes": true,
+		"moduleResolution": "bundler",
+		"noUncheckedIndexedAccess": true,
+		"removeComments": true,
+		"sourceMap": false,
+		"strict": true,
+		"target": "es2022",
+		"types": ["node"]
+	}
+}

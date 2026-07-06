@@ -76,14 +76,14 @@ async function loadConfig(path: string): Promise<Config> {
 		return await readFile(path);
 	} catch (error: unknown) {
 		if (error instanceof Error) {
-			throw new Error(`Failed to load config at "${path}": ${error.message}`, {cause: error});
+			throw new Error(`Failed to load config at "${path}": ${error.message}`, { cause: error });
 		}
 		throw new Error(`Failed to load config at "${path}": unknown error`);
 	}
 }
 
 // Result<T, E> pattern — failure is part of the signature, not a hidden throw.
-type Result<T, E = Error> = {ok: true; value: T} | {ok: false; error: E};
+type Result<T, E = Error> = { ok: true; value: T } | { ok: false; error: E };
 
 class DivisionByZeroError extends Error {
 	readonly name = "DivisionByZeroError" as const;
@@ -91,9 +91,9 @@ class DivisionByZeroError extends Error {
 
 function divide(a: number, b: number): Result<number, DivisionByZeroError> {
 	if (b === 0) {
-		return {ok: false, error: new DivisionByZeroError("Cannot divide by zero")};
+		return { ok: false, error: new DivisionByZeroError("Cannot divide by zero") };
 	}
-	return {ok: true, value: a / b};
+	return { ok: true, value: a / b };
 }
 
 // Caller is forced to handle both outcomes.

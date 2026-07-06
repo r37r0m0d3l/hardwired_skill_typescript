@@ -75,7 +75,7 @@ export function truncate(value: string, limit: number): string {
 
 ```typescript
 // consumer.ts — standard ES module import.
-import {capitalize, truncate} from "./string-utils.js";
+import { capitalize, truncate } from "./string-utils.js";
 
 const result = capitalize("hello");
 const short = truncate("a very long sentence", 10);
