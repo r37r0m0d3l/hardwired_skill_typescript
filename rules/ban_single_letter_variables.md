@@ -2,7 +2,7 @@
 
 **Title:**
 
-- Avoid single-letter variable names — use descriptive, self-explanatory names that convey intent and context.
+- Avoid single-letter variable names - use descriptive, self-explanatory names that convey intent and context.
 
 **ID:**
 
@@ -65,7 +65,7 @@ function calculate(d: string, u: User) {
 			save(v, u.id);
 		}
 	} catch (e) {
-		logger.error(`Failed at iteration ${e}`); // "Failed at iteration [object Object]" — impossible to diagnose
+		logger.error(`Failed at iteration ${e}`); // "Failed at iteration [object Object]" - impossible to diagnose
 	}
 }
 

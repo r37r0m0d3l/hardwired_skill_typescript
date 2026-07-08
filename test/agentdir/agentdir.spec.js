@@ -21,7 +21,7 @@ const ctx = makeContext(testDir);
 		assertFileContains(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript.md"), installedPrinciplesPath, ".agent/skills/hardwired-skill-typescript.md");
 		assertFileExists(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
-		console.log("Install `.agent` directory: SUCCESS — installed files left in test folder.");
+		console.log("Install `.agent` directory: SUCCESS - installed files left in test folder.");
 	} catch (error) {
 		console.error("Install `.agent` directory: FAILED", error && error.message ? error.message : error);
 		process.exitCode = 1;

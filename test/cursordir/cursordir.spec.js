@@ -21,7 +21,7 @@ const ctx = makeContext(testDir);
 		assertFileContains(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript.mdc"), mdcRulesContentSnippet, ".cursor/rules/hardwired-skill-typescript.mdc");
 		assertFileExists(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
-		console.log("Install `.cursor` directory: SUCCESS — installed files left in test folder.");
+		console.log("Install `.cursor` directory: SUCCESS - installed files left in test folder.");
 	} catch (error) {
 		console.error("Install `.cursor` directory: FAILED", error && error.message ? error.message : error);
 		process.exitCode = 1;

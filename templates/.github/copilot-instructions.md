@@ -9,9 +9,9 @@
 
 # Using the skill rules
 
-- **Read the core principles file as the table of contents** — it lists all core rules with links:
+- **Read the core principles file as the table of contents** - it lists all core rules with links:
 	- {{PRIMARY_INTERNAL_PRINCIPLES}}
-- **Each rule is documented in `./rules/`** — refer to specific rule files for detailed explanations and examples.
+- **Each rule is documented in `./rules/`** - refer to specific rule files for detailed explanations and examples.
 - When applying TypeScript guidelines, consult the relevant rule document for context and best practices.
 
 # Quick guardrails (summary)

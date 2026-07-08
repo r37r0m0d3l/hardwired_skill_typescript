@@ -22,7 +22,7 @@
 - ALWAYS create a branded type for domain-specific primitive values (IDs, tokens, currencies, units) that must not be interchangeable at the type level.
 - ALWAYS expose a constructor / factory function or Zod schema that validates and brands the raw value, keeping the brand creation centralised.
 - NEVER use plain `string` or `number` for values that carry domain identity (e.g., `UserId`, `OrderId`, `Email`, `Milliseconds`).
-- NEVER cast an unvalidated value directly to a branded type — always go through the factory/validator.
+- NEVER cast an unvalidated value directly to a branded type - always go through the factory/validator.
 
 **Reason:**
 
@@ -46,7 +46,7 @@
 ## ❌ BAD
 
 ```typescript
-// Both are plain strings — the compiler cannot distinguish them.
+// Both are plain strings - the compiler cannot distinguish them.
 type UserId = string;
 type OrderId = string;
 
@@ -54,7 +54,7 @@ function getOrdersForUser(userId: UserId, orderId: OrderId): void {
 	// No compile error if arguments are swapped at the call site.
 }
 
-// Accidentally swapped — TypeScript is silent.
+// Accidentally swapped - TypeScript is silent.
 const uid = "user-123";
 const oid = "order-456";
 getOrdersForUser(oid, uid); // ← wrong order, no error
@@ -63,7 +63,7 @@ getOrdersForUser(oid, uid); // ← wrong order, no error
 ## ✅ GOOD
 
 ```typescript
-// Branded type — structurally incompatible with other string brands.
+// Branded type - structurally incompatible with other string brands.
 type UserId = string & { readonly _brand: "UserId" };
 type OrderId = string & { readonly _brand: "OrderId" };
 
@@ -90,5 +90,5 @@ const uid = toUserId("user-123");
 const oid = toOrderId("order-456");
 
 getOrdersForUser(uid, oid); // ✅ correct
-// getOrdersForUser(oid, uid); // ✅ compile error — types are incompatible
+// getOrdersForUser(oid, uid); // ✅ compile error - types are incompatible
 ```

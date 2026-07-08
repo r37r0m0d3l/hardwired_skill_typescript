@@ -2,7 +2,7 @@
 
 **Title:**
 
-- Never use the `namespace` or `module` keywords — use ES module `import`/`export` instead.
+- Never use the `namespace` or `module` keywords - use ES module `import`/`export` instead.
 
 **ID:**
 
@@ -56,14 +56,14 @@ namespace StringUtils {
 	}
 }
 
-// Usage requires fully-qualified name — no import statement.
+// Usage requires fully-qualified name - no import statement.
 const result = StringUtils.capitalize("hello");
 ```
 
 ## ✅ GOOD
 
 ```typescript
-// string-utils.ts — plain ES module exports.
+// string-utils.ts - plain ES module exports.
 export function capitalize(value: string): string {
 	return value.charAt(0).toUpperCase() + value.slice(1);
 }
@@ -74,7 +74,7 @@ export function truncate(value: string, limit: number): string {
 ```
 
 ```typescript
-// consumer.ts — standard ES module import.
+// consumer.ts - standard ES module import.
 import { capitalize, truncate } from "./string-utils.js";
 
 const result = capitalize("hello");

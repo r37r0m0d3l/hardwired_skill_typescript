@@ -37,7 +37,7 @@ const ctx = makeContext(testDir);
 		assertFileExists(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript", "principles.md"), "Installed internal agent principles file");
 		assertFileExists(path.join(ctx.testDir, ".github", "skills", "hardwired-skill-typescript", "principles.md"), "Installed internal copilot principles file");
 
-		console.log("Install all: SUCCESS — installed files left in test folder.");
+		console.log("Install all: SUCCESS - installed files left in test folder.");
 	} catch (error) {
 		console.error("Install all: FAILED", error && error.message ? error.message : error);
 		process.exitCode = 1;

@@ -2,11 +2,11 @@
 
 **Title:**
 
-- Never use `Function`, `object`, or `{}` as type annotations — use explicit signatures and shapes instead.
+- Never use `Function`, `object`, or `{}` as type annotations - use explicit signatures and shapes instead.
 
 **ID:**
 
-- TS-AVOID-LOOSE-TYPES
+- TS-NO-LOOSE-TYPES
 
 **Scope:**
 
@@ -19,9 +19,9 @@
 
 **Rule:**
 
-- NEVER use `Function` as a type — always write an explicit callable signature `(arg: T) => R`.
-- NEVER use `object` as a type — always define the expected shape as an `interface`, `type`, or `Record<K, V>`.
-- NEVER use `{}` as a type to mean "any non-nullish value" — use `unknown` or a specific shape instead.
+- NEVER use `Function` as a type - always write an explicit callable signature `(arg: T) => R`.
+- NEVER use `object` as a type - always define the expected shape as an `interface`, `type`, or `Record<K, V>`.
+- NEVER use `{}` as a type to mean "any non-nullish value" - use `unknown` or a specific shape instead.
 - ALWAYS provide precise types so the compiler can enforce call-site correctness and enable IDE autocompletion.
 
 **Reason:**
@@ -47,12 +47,12 @@
 ## ❌ BAD
 
 ```typescript
-// Accepts any callable — no information about arguments or return value.
+// Accepts any callable - no information about arguments or return value.
 function applyTwice(fn: Function, value: number): number {
 	return fn(fn(value));
 }
 
-// Accepts any object shape — impossible to safely access properties.
+// Accepts any object shape - impossible to safely access properties.
 function logId(entity: object): void {
 	console.log(entity.id); // Error: Property 'id' does not exist on type 'object'
 }
@@ -66,12 +66,12 @@ function process(input: {}): void {
 ## ✅ GOOD
 
 ```typescript
-// Explicit callable signature — compiler enforces argument and return types.
+// Explicit callable signature - compiler enforces argument and return types.
 function applyTwice(fn: (value: number) => number, value: number): number {
 	return fn(fn(value));
 }
 
-// Specific shape — property access is type-safe.
+// Specific shape - property access is type-safe.
 interface Entity {
 	id: string;
 }

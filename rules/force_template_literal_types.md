@@ -46,7 +46,7 @@
 ## ❌ BAD
 
 ```typescript
-// Manually listed — drifts out of sync when the base union changes.
+// Manually listed - drifts out of sync when the base union changes.
 type EventName = "onClick" | "onFocus" | "onBlur";
 
 // Adding a new action requires updating both unions separately.
@@ -57,7 +57,7 @@ type ActionPath = "/create" | "/read" | "/update" | "/delete"; // duplicated mai
 ## ✅ GOOD
 
 ```typescript
-// Template literal type — automatically stays in sync with the base union.
+// Template literal type - automatically stays in sync with the base union.
 type BaseEvent = "click" | "focus" | "blur";
 type EventName = `on${Capitalize<BaseEvent>}`; // "onClick" | "onFocus" | "onBlur"
 

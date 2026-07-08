@@ -19,10 +19,6 @@
 		"node": ">=22.18.0"
 	},
 	"files": [
-		".github",
-		"AGENTS.md",
-		"CLAUDE.md",
-		"CURSOR.md",
 		"README.md",
 		"bin/install.js",
 		"principles.md",
@@ -32,20 +28,31 @@
 	],
 	"homepage": "https://github.com/r37r0m0d3l/hardwired_skill_typescript#readme",
 	"keywords": [
+		"agents",
 		"ai",
+		"ai-coding",
 		"ai-governance",
 		"ai-instructions",
 		"ai-skills",
+		"best-practices",
+		"claude",
 		"claude-code",
 		"code-style",
+		"codex",
 		"coding-standards",
 		"copilot",
+		"copilot-instructions",
 		"cursor",
+		"cursorrules",
 		"developer-experience",
+		"immutability",
+		"linting",
 		"llm",
 		"rules",
 		"skill",
-		"typescript"
+		"type-safety",
+		"typescript",
+		"windsurf"
 	],
 	"license": "MIT",
 	"name": "hardwired-skill-typescript",
@@ -69,5 +76,5 @@
 		"test:cursormd": "node test/cursormd/cursormd.spec.js"
 	},
 	"type": "module",
-	"version": "1.0.2"
+	"version": "1.0.3"
 }
