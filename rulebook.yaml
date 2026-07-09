@@ -17,6 +17,9 @@ files:
   - CURSOR.md
   - principles.md
   - rules/alternative_to_enum.md
+  - rules/ban_array_reverse.md
+  - rules/ban_array_sort.md
+  - rules/ban_array_splice.md
   - rules/ban_loose_types.md
   - rules/ban_namespace_or_module.md
   - rules/ban_non_null_assertion.md
@@ -26,7 +29,9 @@ files:
   - rules/discretion_interface_vs_type.md
   - rules/force_control_flow_braces.md
   - rules/force_explicit_return_type_annotations.md
+  - rules/force_is_error.md
   - rules/force_template_literal_types.md
+  - rules/prefer_array_includes.md
   - rules/prefer_composing_types_over_duplicating_object_shapes.md
   - rules/prefer_discriminated_unions.md
   - rules/prefer_satisfies_over_as.md
@@ -41,6 +46,7 @@ files:
   - rules/typing_utilities.md
   - rules/use_as_const.md
   - rules/use_class_modifiers.md
+  - rules/use_error_cause.md
   - rules/use_exhaustive_switch.md
   - rules/use_explicit_naming_and_typing.md
   - rules/use_import_of_native_modules.md

@@ -9,7 +9,7 @@
 
 ## Using the skill rules
 
-- **Read the core principles first** — it acts as the table of contents for the core rules:
+- **Read the core principles first** - it acts as the table of contents for the core rules:
 	- [TypeScript Coding Principles]({{ENCODED_PUBLIC_ROUTER_PATH}})
 - When applying TypeScript guidelines, consult the relevant rule document for context and best practices.
 

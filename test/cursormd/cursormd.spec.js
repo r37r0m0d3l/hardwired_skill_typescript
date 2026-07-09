@@ -21,7 +21,7 @@ const ctx = makeContext(testDir);
 		assertFileContains(path.join(ctx.testDir, "CURSOR.md"), installedPrinciplesPath, "CURSOR.md");
 		assertFileExists(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
-		console.log("Install `CURSOR.md`: SUCCESS — installed files left in test folder.");
+		console.log("Install `CURSOR.md`: SUCCESS - installed files left in test folder.");
 	} catch (error) {
 		console.error("Install `CURSOR.md`: FAILED", error && error.message ? error.message : error);
 		process.exitCode = 1;

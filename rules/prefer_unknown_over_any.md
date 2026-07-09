@@ -30,7 +30,7 @@
 
 **Exceptions:**
 
-- None. If you receive an `any` from a dependency, do not propagate it — immediately treat it as `unknown` and validate/narrow.
+- None. If you receive an `any` from a dependency, do not propagate it - immediately treat it as `unknown` and validate/narrow.
 
 **Enforcement:**
 

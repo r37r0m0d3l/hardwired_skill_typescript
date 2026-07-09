@@ -2,7 +2,7 @@
 
 **Title:**
 
-- Avoid the non-null assertion operator (`!`) — use optional chaining, nullish coalescing, or explicit narrowing instead.
+- Avoid the non-null assertion operator (`!`) - use optional chaining, nullish coalescing, or explicit narrowing instead.
 
 **ID:**
 
@@ -26,7 +26,7 @@
 
 **Reason:**
 
-- Because `!` is a compile-time-only assertion — it produces no runtime check. If the value is actually `null` or `undefined` at runtime, the program crashes with an unhandled `TypeError`.
+- Because `!` is a compile-time-only assertion - it produces no runtime check. If the value is actually `null` or `undefined` at runtime, the program crashes with an unhandled `TypeError`.
 - Because every use of `!` is a silent lie to the compiler: it trades a type error for a potential runtime crash, undermining the entire purpose of strict null checks.
 - Because optional chaining and nullish coalescing are safer, equally concise, and semantically honest about the nullable nature of the value.
 
@@ -51,7 +51,7 @@ function getUsername(user: User | null): string {
 	return user!.name;
 }
 
-// Asserts that getElementById always returns an element — crashes if the id doesn't exist.
+// Asserts that getElementById always returns an element - crashes if the id doesn't exist.
 const button = document.getElementById("submit")!;
 button.addEventListener("click", handleClick);
 
@@ -62,7 +62,7 @@ const city = order!.address!.city!.toUpperCase();
 ## ✅ GOOD
 
 ```typescript
-// Explicit narrowing guard — clear intent, safe at runtime.
+// Explicit narrowing guard - clear intent, safe at runtime.
 function getUsername(user: User | null): string {
 	if (user === null) {
 		return "Anonymous";
@@ -70,7 +70,7 @@ function getUsername(user: User | null): string {
 	return user.name;
 }
 
-// Optional chaining with a nullish fallback — no crash if the element is absent.
+// Optional chaining with a nullish fallback - no crash if the element is absent.
 const button = document.getElementById("submit");
 button?.addEventListener("click", handleClick);
 

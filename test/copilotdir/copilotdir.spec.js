@@ -21,7 +21,7 @@ const ctx = makeContext(testDir);
 		assertFileContains(path.join(ctx.testDir, ".github", "copilot-instructions.md"), installedPrinciplesPath, ".github/copilot-instructions.md");
 		assertFileExists(path.join(ctx.testDir, ".github", "skills", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
-		console.log("Install `.github` directory: SUCCESS — installed files left in test folder.");
+		console.log("Install `.github` directory: SUCCESS - installed files left in test folder.");
 	} catch (error) {
 		console.error("Install `.github` directory: FAILED", error && error.message ? error.message : error);
 		process.exitCode = 1;
