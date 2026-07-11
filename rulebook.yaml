@@ -39,6 +39,7 @@ files:
   - rules/prefer_unknown_over_any.md
   - rules/typing_array.md
   - rules/typing_async.md
+  - rules/typing_catch_error_handling.md
   - rules/typing_error_handling.md
   - rules/typing_from_constants.md
   - rules/typing_generics_that_infer_automatically.md

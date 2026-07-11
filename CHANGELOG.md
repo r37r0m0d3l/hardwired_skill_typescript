@@ -1,5 +1,11 @@
 # 📝 Changelog
 
+[1.0.4]
+
+## ✨ Added
+
+- 📄 **[Typed Catch Error Handling](./rules/typing_catch_error_handling.md):** Encourages the use of typed catch error handling to improve type safety and error management.
+
 [1.0.3]
 
 ## ✨ Added

@@ -19,9 +19,9 @@
 
 **Rule:**
 
-- ALWAYS avoid using the native `Array.prototype.splice()` method on array instances.
-- ALWAYS use the non-mutating `Array.prototype.toSpliced()` method when creating a modified shallow copy of an array after inserting, removing, or replacing elements.
-- ALWAYS make an explicit copy first (e.g., using the spread operator `[...array].splice()`) if working in a legacy execution environment where `toSpliced()` is unavailable.
+- ALWAYS avoid mutating shared arrays in-place with `Array.prototype.splice()`.
+- PREFER the non-mutating `Array.prototype.toSpliced()` method when creating a modified shallow copy of an array after inserting, removing, or replacing elements.
+- If `toSpliced()` is unavailable, clone first (e.g., `const copy = [...array]; copy.splice(...)`) so only the clone is mutated.
 
 **Reason:**
 
