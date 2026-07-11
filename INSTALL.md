@@ -33,7 +33,7 @@ npx hardwired-install-typescript --all
 This is a shorthand equivalent to running:
 
 ```shell
-npx hardwired-install-typescript --agentdir --copilotdir --agentsmd --cursor --claudemd
+npx hardwired-install-typescript --agentdir --copilotdir --agentsmd --cursordir --claudemd
 ```
 
 ### 📂 Option 3: Target Specific Directories
@@ -45,10 +45,10 @@ Target the `.agent` directory for `OpenAI` and universal AI configurations, or `
 
 - <img src=".github/assets/openai.svg" alt="OpenAI icon" width="16" height="16"> `--agentdir` for `.agent/`
 - <img src=".github/assets/copilot.svg" alt="Copilot icon" width="16" height="16"> `--copilotdir` for `.github/`
-- <img src=".github/assets/cursor.svg" alt="Cursor icon" width="16" height="16"> `--cursor` for `.cursor/`
+- <img src=".github/assets/cursor.svg" alt="Cursor icon" width="16" height="16"> `--cursordir` for `.cursor/`
 
 ```shell
-npx hardwired-install-typescript --agentdir --cursor --copilotdir
+npx hardwired-install-typescript --agentdir --cursordir --copilotdir
 ```
 
 ### 📝 Option 4: Target Specific Markdown Files

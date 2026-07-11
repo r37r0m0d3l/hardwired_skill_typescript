@@ -28,8 +28,6 @@ Enforce immutability, type safety, strict linting, and coding standards across e
 - ⚡ **Interactive CLI** - Pick and choose which rules and formats to deploy via terminal prompts.
 - 📦 **Shared Dependency** - Install via npm to keep your AI prompts synchronized across multiple repositories.
 
-##
-
 ## 📍 What it does
 
 Real-world codebases have **low-quality-do-not-overengineer-it-we-have-a-release-soon** code.
@@ -52,7 +50,7 @@ Install as dev dependency:
 npm install -D hardwired-skill-typescript
 ```
 
-Install everything (if you experimenting):
+Install everything (if you're experimenting):
 
 ```shell
 npx hardwired-install-typescript --all

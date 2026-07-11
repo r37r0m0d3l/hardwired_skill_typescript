@@ -41,6 +41,7 @@ If a rule conflicts with explicit project requirements, project requirements win
 - [TS Config](./rules/configuration_tsconfig.md)
 - [Template Literal Types](./rules/force_template_literal_types.md)
 - [TypeScript Utility Types Over Duplication](./rules/typing_utilities.md)
+- [Typed Catch Error Handling](./rules/typing_catch_error_handling.md)
 - [Typed Error Handling](./rules/typing_error_handling.md)
 - [Use Error Cause](./rules/use_error_cause.md)
 - [Use Exhaustive Checks With never](./rules/validate_with_never.md)
