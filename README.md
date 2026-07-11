@@ -15,11 +15,13 @@
 [![Target: CLAUDE.md](https://img.shields.io/badge/→-CLAUDE.md-d97752?style=flat-square&logo=anthropic&logoColor=white)](#)
 [![Target: CURSOR.md](https://img.shields.io/badge/→-CURSOR.md-5456f5?style=flat-square&logo=cursor&logoColor=white)](#)
 
-Opinionated TypeScript rules designed to be reused as a shared skill or injected directly into project AI instruction files.
+**Opinionated, pure TypeScript rules** designed to be reused as a shared skill or injected directly into project AI instruction files.
 
-A reusable, configurable skill that injects strict TypeScript coding rules into AI context files (such as `AGENTS.md`, `CURSOR.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.agent/` and `.cursor/` directory).
+This skill focuses **exclusively** on the TypeScript language and coding practices - it is **not** a **framework-specific** skill (no NestJS, Angular, Vue, React, etc.).
 
-Enforce immutability, type safety, strict linting, and coding standards across every LLM-based coding assistant - **Cursor**, **Claude**, **Claude Code**, **GitHub Copilot**, **Windsurf**, **Codex**, and more - via `cursorrules`, `AGENTS.md`, `CLAUDE.md`, and Copilot instructions.
+A reusable, configurable skill that injects strict TypeScript coding rules into AI context files (such as `AGENTS.md`, `CLAUDE.md`, `.agent/` and `.cursor/` directory).
+
+Enforce immutability, type safety, strict linting, and coding standards across every LLM-based coding assistant - **Cursor**, **Claude Code**, **GitHub Copilot**, **Windsurf**, **Codex**, and more - via `AGENTS.md`, `CLAUDE.md`, and Copilot instructions etc.
 
 ## ✨ Features
 
@@ -34,7 +36,7 @@ Real-world codebases have **low-quality-do-not-overengineer-it-we-have-a-release
 
 Your LLM was trained on plenty of code like this.
 
-This skill guides AI to fix obvious issues and enforce best practices - without losing sight of that reality.
+This skill guides AI to fix obvious issues and enforce best practices.
 
 <img src=".github/assets/000.webp" alt="Screenshot" width="639">
 
@@ -44,7 +46,7 @@ This skill guides AI to fix obvious issues and enforce best practices - without 
 
 ## 📦 Installation
 
-Install as dev dependency:
+Install as a dev dependency:
 
 ```shell
 npm install -D hardwired-skill-typescript
