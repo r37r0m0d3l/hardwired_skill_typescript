@@ -21,7 +21,7 @@ image:https://img.shields.io/badge/→-CURSOR.md-5456f5?style=flat-square&logo=c
 
 *Opinionated, pure TypeScript rules* designed to be reused as a shared skill or injected directly into project AI instruction files.
 
-This skill focuses *exclusively* on the TypeScript language and coding practices—it is *not* a *framework-specific* skill (no NestJS, Angular, Vue, React, etc.).
+This skill focuses *exclusively* on the TypeScript language and coding practices—it is *not* a *framework-specific* skill (no NestJS, Angular, Vue, React, etc.)
 
 A reusable, configurable skill that injects strict TypeScript coding rules into AI context files (such as `AGENTS.md`, `CLAUDE.md`, `.agent/` and `.cursor/` directory).
 
@@ -71,19 +71,15 @@ Install `.agent/` directory and `AGENTS.md` file for *universal* AI configuratio
 npx hardwired-install-typescript --agentdir --agentsmd
 ----
 
-NOTE: For *all* CLI options, flags, and target-specific setup see link:./INSTALL.md[*INSTALL.md*].
+NOTE: For *all* CLI options, flags, and target-specific setup see link:./docs/INSTALL.md[*INSTALL.md*].
 
 == 📖 Documentation and Principles
 
 * The single source of truth for all rules is link:./principles.md[`principles.md`].
-* For the full categorized rules reference see link:./DOCS.md[*DOCS.md*].
+* For the full categorized rules reference see link:./docs/ACKNOWLEDGMENTS.md[*ACKNOWLEDGMENTS].
 
 == ⚙️ Prerequisites
 
 [square]
 * *Node.js*: `{node-version}` or higher (recommended)
 * *TypeScript*: `{ts-version}` or higher (to support features like `satisfies`)
-
-== 🤝 Contributing
-
-Contributions and feature suggestions are welcome. Feel free to check the link:https://github.com/r37r0m0d3l/hardwired_skill_typescript/issues[issues page] if you want to propose a new rule.

@@ -62,6 +62,7 @@
 		"url": "git+https://github.com/r37r0m0d3l/hardwired_skill_typescript.git"
 	},
 	"scripts": {
+		"build:docs": "npx downdoc README.adoc -o README.md",
 		"format:check": "prettier --check \"rules/**/*.md\" \"bin/*.ts\" \"*.md\"",
 		"format:write": "prettier --write \"rules/**/*.md\" \"bin/*.ts\" \"*.md\"",
 		"lint:md": "markdownlint-cli2 \"rules/**/*.md\" \"*.md\"",
