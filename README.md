@@ -64,12 +64,12 @@ npx hardwired-install-typescript --agentdir --agentsmd
 ```
 
 **📌 NOTE**\
-For **all** CLI options, flags, and target-specific setup see [**INSTALL.md**](./docs/INSTALL.md).
+For **all** CLI options, flags, and target-specific setup see [**INSTALL.md**](./INSTALL.md).
 
 ## 📖 Documentation and Principles
 
 * The single source of truth for all rules is [`principles.md`](./principles.md).
-* For the full categorized rules reference see [*ACKNOWLEDGMENTS](./docs/ACKNOWLEDGMENTS.md).
+* For the full categorized rules reference see [*ACKNOWLEDGMENTS](./ACKNOWLEDGMENTS.md).
 
 ## ⚙️ Prerequisites
 

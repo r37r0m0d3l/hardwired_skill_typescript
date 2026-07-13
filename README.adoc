@@ -71,12 +71,12 @@ Install `.agent/` directory and `AGENTS.md` file for *universal* AI configuratio
 npx hardwired-install-typescript --agentdir --agentsmd
 ----
 
-NOTE: For *all* CLI options, flags, and target-specific setup see link:./docs/INSTALL.md[*INSTALL.md*].
+NOTE: For *all* CLI options, flags, and target-specific setup see link:./INSTALL.md[*INSTALL.md*].
 
 == 📖 Documentation and Principles
 
 * The single source of truth for all rules is link:./principles.md[`principles.md`].
-* For the full categorized rules reference see link:./docs/ACKNOWLEDGMENTS.md[*ACKNOWLEDGMENTS].
+* For the full categorized rules reference see link:./ACKNOWLEDGMENTS.md[*ACKNOWLEDGMENTS].
 
 == ⚙️ Prerequisites
 
