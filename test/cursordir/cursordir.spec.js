@@ -17,8 +17,11 @@ const ctx = makeContext(testDir);
 
 		assertInstalledPackage(ctx.testDir);
 
-		const mdcRulesContentSnippet = "Follow `principles.md` as the absolute single source of truth";
+		const mdcRulesContentSnippet = "Follow `./hardwired-skill-typescript/principles.md` as the absolute single source of truth";
 		assertFileContains(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript.mdc"), mdcRulesContentSnippet, ".cursor/rules/hardwired-skill-typescript.mdc");
+
+		const mdcAlignmentSnippet = "completely aligned with `./hardwired-skill-typescript/principles.md`";
+		assertFileContains(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript.mdc"), mdcAlignmentSnippet, ".cursor/rules/hardwired-skill-typescript.mdc alignment");
 		assertFileExists(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript", "principles.md"), "Installed principles file");
 
 		console.log("Install `.cursor` directory: SUCCESS - installed files left in test folder.");

@@ -33,7 +33,7 @@ npx hardwired-install-typescript --all
 This is a shorthand equivalent to running:
 
 ```shell
-npx hardwired-install-typescript --agentdir --copilotdir --agentsmd --cursordir --claudemd
+npx hardwired-install-typescript --agentdir --copilotdir --agentsmd --cursordir --cursormd --claudemd
 ```
 
 ### 📂 Option 3: Target Specific Directories
@@ -68,7 +68,7 @@ npx hardwired-install-typescript --agentsmd --cursormd --claudemd
 ### 📊 Installation Options Summary
 
 | Target File / Directory | CLI Flag       | Installation Behavior                                   |
-|:------------------------|:---------------|:--------------------------------------------------------|
+| :---------------------- | :------------- | :------------------------------------------------------ |
 | **All Targets**         | `--all`        | Fully deploys to all supported AI paths and files       |
 | **Universal Agents**    | `--agentdir`   | Targets the universal `.agent` directory (symlink/copy) |
 | **GitHub Copilot**      | `--copilotdir` | Targets the `.github` configurations (symlink/copy)     |
@@ -76,3 +76,35 @@ npx hardwired-install-typescript --agentsmd --cursormd --claudemd
 | **AGENTS.md**           | `--agentsmd`   | Creates/appends rules to a local `AGENTS.md` file       |
 | **CLAUDE.md**           | `--claudemd`   | Creates/appends rules to a local `CLAUDE.md` file       |
 | **CURSOR.md**           | `--cursormd`   | Creates/appends rules to a local `CURSOR.md` file       |
+
+## 🗑️ Uninstallation
+
+If you need to cleanly remove the skill from your workspace, use the `hardwired-uninstall-typescript` command. It supports the same flags as the installer to target specific areas for cleanup.
+
+### 💡 Option 1: Interactive Uninstallation (Default)
+
+Launch an interactive prompt to confirm uninstalling everything:
+
+```shell
+npx hardwired-uninstall-typescript
+```
+
+### 🚀 Option 2: Full Uninstallation
+
+Remove all skill files and references from all supported targets:
+
+```shell
+npx hardwired-uninstall-typescript --all
+```
+
+### 📊 Uninstallation Options Summary
+
+| Target File / Directory | CLI Flag       | Uninstallation Behavior                                  |
+| :---------------------- | :------------- | :------------------------------------------------------- |
+| **All Targets**         | `--all`        | Removes all skill files and references from all paths    |
+| **Universal Agents**    | `--agentdir`   | Removes the `.agent/skills/hardwired-skill-typescript`   |
+| **GitHub Copilot**      | `--copilotdir` | Removes the `.github/skills/hardwired-skill-typescript`  |
+| **Cursor**              | `--cursordir`  | Removes the `.cursor/rules/hardwired-skill-typescript`   |
+| **AGENTS.md**           | `--agentsmd`   | Removes skill-specific references from `AGENTS.md`      |
+| **CLAUDE.md**           | `--claudemd`   | Removes skill-specific references from `CLAUDE.md`      |
+| **CURSOR.md**           | `--cursormd`   | Removes skill-specific references from `CURSOR.md`      |

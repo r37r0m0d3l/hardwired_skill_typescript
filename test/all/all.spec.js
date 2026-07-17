@@ -17,17 +17,18 @@ const ctx = makeContext(testDir);
 
 		assertInstalledPackage(ctx.testDir);
 
-		const internalPrinciplesPath = "./.cursor/rules/hardwired-skill-typescript/principles.md";
-		const publicRouterPath = "./.agent/skills/hardwired-skill-typescript.md";
-
 		// Verify structural directory installations
-		assertFileContains(path.join(ctx.testDir, ".github", "copilot-instructions.md"), internalPrinciplesPath, ".github/copilot-instructions.md");
-		assertFileContains(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript.md"), internalPrinciplesPath, ".agent/skills/hardwired-skill-typescript.md");
+		assertFileContains(path.join(ctx.testDir, ".github", "copilot-instructions.md"), "./skills/hardwired-skill-typescript/principles.md", ".github/copilot-instructions.md");
+		assertFileContains(path.join(ctx.testDir, ".agent", "skills", "hardwired-skill-typescript.md"), "./hardwired-skill-typescript/principles.md", ".agent/skills/hardwired-skill-typescript.md");
 
-		const mdcRulesContentSnippet = "Follow `principles.md` as the absolute single source of truth";
+		const mdcRulesContentSnippet = "Follow `./hardwired-skill-typescript/principles.md` as the absolute single source of truth";
 		assertFileContains(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript.mdc"), mdcRulesContentSnippet, ".cursor/rules/hardwired-skill-typescript.mdc");
 
+		const mdcAlignmentSnippet = "completely aligned with `./hardwired-skill-typescript/principles.md`";
+		assertFileContains(path.join(ctx.testDir, ".cursor", "rules", "hardwired-skill-typescript.mdc"), mdcAlignmentSnippet, ".cursor/rules/hardwired-skill-typescript.mdc alignment");
+
 		// Verify Root Router configurations mapping to public router path
+		const publicRouterPath = "./.agent/skills/hardwired-skill-typescript.md";
 		assertFileContains(path.join(ctx.testDir, "AGENTS.md"), publicRouterPath, "AGENTS.md");
 		assertFileContains(path.join(ctx.testDir, "CLAUDE.md"), publicRouterPath, "CLAUDE.md");
 		assertFileContains(path.join(ctx.testDir, "CURSOR.md"), publicRouterPath, "CURSOR.md");

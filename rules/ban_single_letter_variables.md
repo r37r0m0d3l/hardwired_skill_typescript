@@ -32,13 +32,13 @@
 **Detailed Mappings & Semantic Clashes:**
 
 - **`m` (`match` / `module` / `message` / `metric`):** In text processing, regular expressions, or routing code, `m` is constantly overloaded. A developer reading a trace line like `if (!m) return;` cannot tell if the code is validating a RegExp match results array, a dynamically imported module wrapper, or an incoming message socket buffer payload.
-   - _Preferred strict alternatives:_ `matchResult`, `loadedModule`, `payloadMsg`, `performanceMetric`.
+  - _Preferred strict alternatives:_ `matchResult`, `loadedModule`, `payloadMsg`, `performanceMetric`.
 - **`u` (`user` / `url` / `uuid` / `utility`):** In backend pipelines, authorization logic frequently mixes current user identities, resource ownership checks, and API routes. Representing a user actor object as `u` turns complex access rules into a confusing puzzle (e.g., `if (u.id === o.uid)`).
-   - _Preferred strict alternatives:_ `activeUser`, `targetUser`, `requestUrl`, `itemUuid`.
+  - _Preferred strict alternatives:_ `activeUser`, `targetUser`, `requestUrl`, `itemUuid`.
 - **`e` (`error` / `event` / `element` / `entity`):** This is the most volatile single letter in JavaScript ecosystems. It is frequently reused across adjacent nested blocks: a DOM click `event` callback contains an array loop mapping an HTML `element`, wrapping a database save block for a domain `entity`, caught inside a `try/catch` processing an execution `error`. Nesting multiple `e` blocks shadows variables, breaks runtime tracing, and makes telemetry tracing impossible.
-   - _Preferred strict alternatives:_ `catchError`, `domEvent`, `targetElement`, `dbEntity`.
+  - _Preferred strict alternatives:_ `catchError`, `domEvent`, `targetElement`, `dbEntity`.
 - **`a`, `b` (Array sort tracking):** The boilerplate signature `(a, b) => a - b` introduces structural ambiguity once arrays scale beyond plain numbers to complex nested object comparisons.
-   - _Preferred strict alternatives:_ `alphaItem`, `betaItem`, `alphaProduct`, `betaProduct`. Using descriptive, contextual prefixes (or explicit terms like `alpha` and `beta` based on Greek comparative roots) retains abstraction while guaranteeing clean global text search paths.
+  - _Preferred strict alternatives:_ `alphaItem`, `betaItem`, `alphaProduct`, `betaProduct`. Using descriptive, contextual prefixes (or explicit terms like `alpha` and `beta` based on Greek comparative roots) retains abstraction while guaranteeing clean global text search paths.
 
 **Exceptions:**
 

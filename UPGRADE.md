@@ -24,10 +24,10 @@ npx hardwired-install-typescript --all
 
 ## 3. If generated files are not symlinked, do a clean reinstalling
 
-In some environments, files are copied instead of symlinked. If the upgrade output looks stale, remove generated targets and install again:
+In some environments, files are copied instead of symlinked. If the upgrade output looks stale, use the uninstaller to remove generated targets and then install again:
 
 ```shell
-rm -rf .agent/skills/hardwired-skill-typescript .github/skills/hardwired-skill-typescript .cursor/rules/hardwired-skill-typescript
+npx hardwired-uninstall-typescript --all
 npx hardwired-install-typescript --all
 ```
 
