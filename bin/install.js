@@ -227,7 +227,7 @@ class SkillInstaller {
             if (!isFound) {
                 const escapeForRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
                 const exactPathEscaped = escapeForRegex(checkNoDot);
-                const mdLinkTargetRegex = new RegExp(`\[[^\]]*]\([^()]*${exactPathEscaped}[^()]*\)`, "i");
+                const mdLinkTargetRegex = new RegExp(`\\[[^\\]]*\\]\\([^()]*${exactPathEscaped}[^()]*\\)`, "i");
                 const inlineCodeRegex = new RegExp("`[^`]*" + exactPathEscaped + "[^`]*`", "i");
                 const plainPathRegex = new RegExp("(^|\\s|[\">('])" + exactPathEscaped + "($|\\s|[\"<)'])", "i");
                 if (mdLinkTargetRegex.test(content) || inlineCodeRegex.test(content) || plainPathRegex.test(content)) {
@@ -252,6 +252,31 @@ class SkillInstaller {
         const answer = await rl.question(`${query} (y/N): `);
         const normalized = answer.toLowerCase().trim();
         return normalized === "y" || normalized === "yes";
+    }
+    getProcessedTemplate(templatesSrcDir, templatePath, destPath, principlesPath, rulesPath, routerPath = null) {
+        const fullTemplatePath = join(templatesSrcDir, templatePath);
+        const content = readFileSync(fullTemplatePath, "utf8");
+        const getRel = (from, to) => {
+            let rel = relative(dirname(from), to).replace(/\\/g, "/");
+            if (!rel.startsWith("./") && !rel.startsWith("../") && rel !== ".") {
+                rel = "./" + rel;
+            }
+            return rel;
+        };
+        const absPrinciples = join(this.workspaceRoot, principlesPath);
+        const absRules = join(this.workspaceRoot, rulesPath);
+        const absRouter = routerPath ? join(this.workspaceRoot, routerPath) : absPrinciples;
+        const relPrinciples = getRel(destPath, absPrinciples);
+        const relRules = getRel(destPath, absRules);
+        const relRouter = getRel(destPath, absRouter);
+        return content
+            .replace(/{{PRINCIPLES_PATH}}/g, relPrinciples)
+            .replace(/{{RULES_PATH}}/g, relRules)
+            .replace(/{{ROUTER_PATH}}/g, relRouter)
+            .replace(/{{SKILL_NAME}}/g, SKILL_NAME)
+            .replace(/{{ENCODED_INTERNAL_PRINCIPLES}}/g, encodeURI(relPrinciples))
+            .replace(/{{ENCODED_PUBLIC_ROUTER_PATH}}/g, encodeURI(relRouter))
+            .replace(/{{PRIMARY_INTERNAL_PRINCIPLES}}/g, relPrinciples);
     }
     async execute() {
         const { values } = parseArgs({
@@ -371,48 +396,23 @@ class SkillInstaller {
             this.ensureDir(target);
             this.transferFiles(target);
         }
-        let internalPrinciplesPath;
-        if (shouldInstallCursorDir) {
-            internalPrinciplesPath = join(PATH.CURSOR.dir, PATH.CURSOR.dirSub, SKILL_NAME, PATH_PRINCIPLES);
-        }
-        else if (shouldInstallAgentDir) {
-            internalPrinciplesPath = join(PATH.AGENT.dir, PATH.AGENT.dirSub, SKILL_NAME, PATH_PRINCIPLES);
-        }
-        else {
-            internalPrinciplesPath = join(PATH.COPILOT.dir, PATH.COPILOT.dirSub, SKILL_NAME, PATH_PRINCIPLES);
-        }
-        let routerPathRaw;
-        if (shouldLinkViaAgentRouter) {
-            routerPathRaw = join(PATH.AGENT.dir, PATH.AGENT.dirSub, PATH.AGENT.file);
-        }
-        else {
-            routerPathRaw = internalPrinciplesPath;
-        }
-        const primaryInternalPrinciples = `./${internalPrinciplesPath.replace(/\\/g, "/")}`;
-        const publicRouterPath = `./${routerPathRaw.replace(/\\/g, "/")}`;
-        const encodedPublicRouterPath = encodeURI(publicRouterPath);
-        const encodedInternalPrinciples = encodeURI(primaryInternalPrinciples);
+        const bestPrinciplesPath = shouldInstallAgentDir
+            ? join(PATH.AGENT.dir, PATH.AGENT.dirSub, SKILL_NAME, PATH_PRINCIPLES)
+            : shouldInstallCursorDir
+                ? join(PATH.CURSOR.dir, PATH.CURSOR.dirSub, SKILL_NAME, PATH_PRINCIPLES)
+                : join(PATH.COPILOT.dir, PATH.COPILOT.dirSub, SKILL_NAME, PATH_PRINCIPLES);
+        const bestRulesPath = shouldInstallAgentDir
+            ? join(PATH.AGENT.dir, PATH.AGENT.dirSub, SKILL_NAME, PATH_RULES)
+            : shouldInstallCursorDir
+                ? join(PATH.CURSOR.dir, PATH.CURSOR.dirSub, SKILL_NAME, PATH_RULES)
+                : join(PATH.COPILOT.dir, PATH.COPILOT.dirSub, SKILL_NAME, PATH_RULES);
+        const bestRouterPath = shouldLinkViaAgentRouter ? join(PATH.AGENT.dir, PATH.AGENT.dirSub, PATH.AGENT.file) : bestPrinciplesPath;
         const templatesSrcDir = join(this.packageRoot, "templates");
-        let templates;
-        try {
-            templates = {
-                agentdir: readFileSync(join(templatesSrcDir, PATH.AGENT.dir, PATH.AGENT.dirSub, PATH.AGENT.file), "utf8").replace(/{{ENCODED_INTERNAL_PRINCIPLES}}/g, encodedInternalPrinciples),
-                agentsmd: readFileSync(join(templatesSrcDir, PATH.AGENT.fileRoot), "utf8").replace(/{{ENCODED_PUBLIC_ROUTER_PATH}}/g, encodedPublicRouterPath),
-                claudemd: readFileSync(join(templatesSrcDir, PATH.CLAUDE.fileRoot), "utf8").replace(/{{ENCODED_PUBLIC_ROUTER_PATH}}/g, encodedPublicRouterPath),
-                copilotdir: readFileSync(join(templatesSrcDir, PATH.COPILOT.dir, PATH.COPILOT.file), "utf8").replace(/{{PRIMARY_INTERNAL_PRINCIPLES}}/g, primaryInternalPrinciples),
-                cursordir: readFileSync(join(templatesSrcDir, PATH.CURSOR.dir, PATH.CURSOR.dirSub, PATH.CURSOR.file), "utf8").replace(/{{SKILL_NAME}}/g, SKILL_NAME),
-                cursormd: readFileSync(join(templatesSrcDir, PATH.CURSOR.fileRoot), "utf8").replace(/{{ENCODED_PUBLIC_ROUTER_PATH}}/g, encodedPublicRouterPath),
-            };
-        }
-        catch (error) {
-            console.error(`[${SKILL_NAME}] Failed to load template files:`, error?.message || error);
-            this.hasErrors = true;
-            return;
-        }
         if (shouldInstallCursorDir) {
             try {
+                const cursordirTemplate = this.getProcessedTemplate(templatesSrcDir, join(PATH.CURSOR.dir, PATH.CURSOR.dirSub, PATH.CURSOR.file), this.paths.cursordir, join(PATH.CURSOR.dir, PATH.CURSOR.dirSub, SKILL_NAME, PATH_PRINCIPLES), join(PATH.CURSOR.dir, PATH.CURSOR.dirSub, SKILL_NAME, PATH_RULES));
                 this.ensureDir(dirname(this.paths.cursordir));
-                writeFileSync(this.paths.cursordir, templates.cursordir, "utf8");
+                writeFileSync(this.paths.cursordir, cursordirTemplate, "utf8");
                 console.log(`✅ [${SKILL_NAME}] Created and initialized custom MDC context target "${PATH.CURSOR.dir}/${PATH.CURSOR.dirSub}/${PATH.CURSOR.file}".`);
             }
             catch (error) {
@@ -421,21 +421,56 @@ class SkillInstaller {
             }
         }
         if (shouldInstallCopilotDir) {
-            this.injectInstructions(this.paths.copilotdir, templates.copilotdir, `${PATH.COPILOT.dir}/${PATH.COPILOT.file}`, primaryInternalPrinciples);
+            try {
+                const copilotdirTemplate = this.getProcessedTemplate(templatesSrcDir, join(PATH.COPILOT.dir, PATH.COPILOT.file), this.paths.copilotdir, join(PATH.COPILOT.dir, PATH.COPILOT.dirSub, SKILL_NAME, PATH_PRINCIPLES), join(PATH.COPILOT.dir, PATH.COPILOT.dirSub, SKILL_NAME, PATH_RULES));
+                this.injectInstructions(this.paths.copilotdir, copilotdirTemplate, `${PATH.COPILOT.dir}/${PATH.COPILOT.file}`, join(PATH.COPILOT.dir, PATH.COPILOT.dirSub, SKILL_NAME, PATH_PRINCIPLES));
+            }
+            catch (error) {
+                console.error(`[${SKILL_NAME}] Failed to deploy Copilot configuration:`, error?.message || error);
+                this.hasErrors = true;
+            }
         }
         if (shouldInstallAgentDir) {
-            this.injectInstructions(this.paths.agentdir, templates.agentdir, `${PATH.AGENT.dir}/${PATH.AGENT.dirSub}/${PATH.AGENT.file}`, primaryInternalPrinciples);
+            try {
+                const agentdirTemplate = this.getProcessedTemplate(templatesSrcDir, join(PATH.AGENT.dir, PATH.AGENT.dirSub, PATH.AGENT.file), this.paths.agentdir, join(PATH.AGENT.dir, PATH.AGENT.dirSub, SKILL_NAME, PATH_PRINCIPLES), join(PATH.AGENT.dir, PATH.AGENT.dirSub, SKILL_NAME, PATH_RULES));
+                this.injectInstructions(this.paths.agentdir, agentdirTemplate, `${PATH.AGENT.dir}/${PATH.AGENT.dirSub}/${PATH.AGENT.file}`, join(PATH.AGENT.dir, PATH.AGENT.dirSub, SKILL_NAME, PATH_PRINCIPLES));
+            }
+            catch (error) {
+                console.error(`[${SKILL_NAME}] Failed to deploy AgentDir configuration:`, error?.message || error);
+                this.hasErrors = true;
+            }
         }
         if (shouldWriteAgentsMd) {
-            const fallbackHeader = `# Project Agent Instructions\nThis repository enforces strict TypeScript standards.\n\n## Coding Standards\n`;
-            this.injectInstructions(this.paths.agentsmd, templates.agentsmd, PATH.AGENT.fileRoot, publicRouterPath, fallbackHeader);
+            try {
+                const agentsmdTemplate = this.getProcessedTemplate(templatesSrcDir, PATH.AGENT.fileRoot, this.paths.agentsmd, bestPrinciplesPath, bestRulesPath, bestRouterPath);
+                const fallbackHeader = `# Project Agent Instructions\nThis repository enforces strict TypeScript standards.\n\n## Coding Standards\n`;
+                this.injectInstructions(this.paths.agentsmd, agentsmdTemplate, PATH.AGENT.fileRoot, bestRouterPath, fallbackHeader);
+            }
+            catch (error) {
+                console.error(`[${SKILL_NAME}] Failed to deploy AGENTS.md:`, error?.message || error);
+                this.hasErrors = true;
+            }
         }
         if (shouldWriteClaudeMd) {
-            this.injectInstructions(this.paths.claudemd, templates.claudemd, PATH.CLAUDE.fileRoot, publicRouterPath);
+            try {
+                const claudemdTemplate = this.getProcessedTemplate(templatesSrcDir, PATH.CLAUDE.fileRoot, this.paths.claudemd, bestPrinciplesPath, bestRulesPath, bestRouterPath);
+                this.injectInstructions(this.paths.claudemd, claudemdTemplate, PATH.CLAUDE.fileRoot, bestRouterPath);
+            }
+            catch (error) {
+                console.error(`[${SKILL_NAME}] Failed to deploy CLAUDE.md:`, error?.message || error);
+                this.hasErrors = true;
+            }
         }
         if (shouldWriteCursorMd) {
-            const fallbackHeader = `# Cursor Configuration Rules\n\n## Context Routing\n`;
-            this.injectInstructions(this.paths.cursormd, templates.cursormd, PATH.CURSOR.fileRoot, publicRouterPath, fallbackHeader);
+            try {
+                const cursormdTemplate = this.getProcessedTemplate(templatesSrcDir, PATH.CURSOR.fileRoot, this.paths.cursormd, bestPrinciplesPath, bestRulesPath, bestRouterPath);
+                const fallbackHeader = `# Cursor Configuration Rules\n\n## Context Routing\n`;
+                this.injectInstructions(this.paths.cursormd, cursormdTemplate, PATH.CURSOR.fileRoot, bestRouterPath, fallbackHeader);
+            }
+            catch (error) {
+                console.error(`[${SKILL_NAME}] Failed to deploy CURSOR.md:`, error?.message || error);
+                this.hasErrors = true;
+            }
         }
         if (this.hasErrors) {
             console.error(`\n❌ [${SKILL_NAME}] Initialization completed with errors.`);

@@ -63,6 +63,13 @@ Install `.agent/` directory and `AGENTS.md` file for **universal** AI configurat
 npx hardwired-install-typescript --agentdir --agentsmd
 ```
 
+### 4. Uninstall (Clean up)
+If you need to remove the skill from your project:
+
+```shell
+npx hardwired-uninstall-typescript --all
+```
+
 **📌 NOTE**\
 For **all** CLI options, flags, and target-specific setup see [**INSTALL.md**](./INSTALL.md).
 

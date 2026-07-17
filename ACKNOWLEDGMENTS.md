@@ -20,6 +20,7 @@ Below is the categorized list of the TypeScript conventions injected by this ski
 
 ### 📐 Code Architecture and Modeling
 
+- **[Branded / Nominal Types](./rules/discretion_branded_types.md):** Implements opaque type patterns to prevent accidental mixing of primitive types (e.g., UserId vs OrderId).
 - **[Discriminated Unions](./rules/prefer_discriminated_unions.md):** Encourages clear, safe object variants.
 - **[Enum Alternative](./rules/alternative_to_enum.md):** Uses safer modern structures over native TypeScript enums.
 - **[No `namespace` or `module`](./rules/ban_namespace_or_module.md):** Bans legacy modules in favor of standard ES imports.
@@ -52,6 +53,7 @@ Below is the categorized list of the TypeScript conventions injected by this ski
 - **[Exhaustive Checks with `never`](./rules/validate_with_never.md):** Leverages the compiler to guarantee all logic branches are handled.
 - **[Exhaustive Switch](./rules/use_exhaustive_switch.md):** Enforce exhaustive compile-time `switch` statements.
 - **[Mandatory Control Flow Braces](./rules/force_control_flow_braces.md):** Bans single-line blocks without braces for `if`, `for`, and `while` loops.
+- **[Typed Catch Error Handling](./rules/typing_catch_error_handling.md):** Ensures catch-clause variables are correctly narrowed from `unknown`.
 - **[Typed Error Handling](./rules/typing_error_handling.md):** Enforces safe catch-clause type parsing.
 - **[Use Type Predicates](./rules/typing_return_type.md):** Encourages `is` type guards for reusable type narrowing.
 

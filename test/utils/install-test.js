@@ -43,7 +43,13 @@ export async function installPackedArchive(ctx, repoRoot) {
 	} catch (_error) {
 		// ignore
 	}
-	fs.renameSync(packageDir, targetDir);
+	try {
+		fs.renameSync(packageDir, targetDir);
+	} catch (err) {
+		// Fallback for Windows EPERM or cross-device issues
+		fs.cpSync(packageDir, targetDir, { recursive: true });
+		fs.rmSync(packageDir, { recursive: true, force: true });
+	}
 	console.log(`Extracted package into ${targetDir}`);
 
 	const binDir = path.join(ctx.testDir, "node_modules", ".bin");

@@ -2,6 +2,7 @@
   "config": {
     "MD010": false, // No hard tabs
     "MD013": false, // Disable line length rule so Prettier can manage wrap widths
+    "MD024": { "siblings_only": true }, // Allows duplicate headings under different sections
     "MD033": false  // Allows you to keep your markdown comments intact if needed
   }
 }

@@ -1,7 +1,8 @@
 {
 	"author": "r37r0m0d3l",
 	"bin": {
-		"hardwired-install-typescript": "bin/install.js"
+		"hardwired-install-typescript": "bin/install.js",
+		"hardwired-uninstall-typescript": "bin/uninstall.js"
 	},
 	"bugs": {
 		"url": "https://github.com/r37r0m0d3l/hardwired_skill_typescript/issues"
@@ -12,7 +13,7 @@
 		"markdownlint-cli2": "^0.12.1",
 		"prettier": "^3.8.4",
 		"tar": "^7.5.16",
-		"typescript": "^6.0.3"
+		"typescript": "^7.0.2"
 	},
 	"engineStrict": true,
 	"engines": {
@@ -21,6 +22,7 @@
 	"files": [
 		"README.md",
 		"bin/install.js",
+		"bin/uninstall.js",
 		"principles.md",
 		"rulebook.yaml",
 		"rules/",
@@ -62,7 +64,8 @@
 		"url": "git+https://github.com/r37r0m0d3l/hardwired_skill_typescript.git"
 	},
 	"scripts": {
-		"build:docs": "npx downdoc README.adoc -o README.md",
+		"build": "tsc --module es2022",
+		"build:docs": "npx downdoc docs/README.adoc -o README.md",
 		"format:check": "prettier --check \"rules/**/*.md\" \"bin/*.ts\" \"*.md\"",
 		"format:write": "prettier --write \"rules/**/*.md\" \"bin/*.ts\" \"*.md\"",
 		"lint:md": "markdownlint-cli2 \"rules/**/*.md\" \"*.md\"",
@@ -77,5 +80,5 @@
 		"test:cursormd": "node test/cursormd/cursormd.spec.js"
 	},
 	"type": "module",
-	"version": "1.0.4"
+	"version": "1.0.5"
 }

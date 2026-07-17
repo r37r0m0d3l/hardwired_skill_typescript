@@ -7,8 +7,8 @@ globs: "**/*.{ts,tsx,js,jsx,json}"
 # TypeScript System Rules
 
 ## 🎯 Core Alignment & Source of Truth
-- **Follow `principles.md` as the absolute single source of truth for all TypeScript code generation and style rules.**
-- If anything in this rule or file conflicts with `principles.md`, **`principles.md` wins**.
+- **Follow `{{PRINCIPLES_PATH}}` as the absolute single source of truth for all TypeScript code generation and style rules.**
+- If anything in this rule or file conflicts with `{{PRINCIPLES_PATH}}`, **`{{PRINCIPLES_PATH}}` wins**.
 - If a rule conflicts with explicit project requirements, project requirements win.
-- For specific implementations, consult the relevant rule files located inside `./.cursor/rules/{{SKILL_NAME}}/rules/`.
-- Keep `CURSOR.md`, `.cursor/rules/hardwired-skill-typescript.mdc`, `CLAUDE.md`, and `rulebook.yaml` completely aligned with `principles.md`.
+- For specific implementations, consult the relevant rule files located inside `{{RULES_PATH}}/`.
+- Keep `CURSOR.md`, `.cursor/rules/hardwired-skill-typescript.mdc`, `CLAUDE.md`, and `rulebook.yaml` completely aligned with `{{PRINCIPLES_PATH}}`.
