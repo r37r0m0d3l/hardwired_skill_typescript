@@ -1,6 +1,6 @@
 ---
 description: Condensed TypeScript rules from hardwired-skill-typescript for high-quality, type-safe development.
-globs: **/*.ts, **/*.tsx
+globs: "**/*.{ts,tsx}"
 alwaysApply: false
 ---
 
