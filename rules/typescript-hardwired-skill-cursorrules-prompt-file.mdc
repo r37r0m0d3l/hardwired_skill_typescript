@@ -1,0 +1,98 @@
+---
+description: Condensed TypeScript rules from hardwired-skill-typescript for high-quality, type-safe development.
+globs: **/*.ts, **/*.tsx
+alwaysApply: false
+---
+
+# Hardwired TypeScript Skill
+
+This is a condensed version of the [hardwired-skill-typescript](https://www.npmjs.com/package/hardwired-skill-typescript) rulebook. These rules are opinionated and designed to enforce strict type safety, immutability, and explicit coding patterns.
+
+## Core Principles
+
+- **Immutability First**: Favor non-destructive operations to prevent side effects.
+- **Strict Type Safety**: Eliminate `any`, loose types, and unsafe assertions.
+- **Explicit over Implicit**: Prefer explicit type annotations and descriptive naming.
+
+## 1. Immutability & Array Operations
+
+- **Ban Mutating Methods**: NEVER use `reverse()`, `sort()`, or `splice()` as they mutate the original array.
+- **Use Modern Alternatives**: Use `toReversed()`, `toSorted()`, or `toSpliced()`.
+- **Legacy Fallback**: If using an older environment, copy the array first: `[...arr].reverse()`.
+- **Array Syntax**: ALWAYS use `Array<T>` instead of `T[]` for consistency.
+
+```typescript
+// BAD
+const sorted = arr.sort(); // Mutates arr!
+
+// GOOD
+const sorted = arr.toSorted();
+const reversed = [...arr].reverse();
+const items: Array<string> = ["a", "b"];
+```
+
+## 2. Strict Typing & Safety
+
+- **Ban `any`**: ALWAYS prefer `unknown` over `any`.
+- **Avoid Loose Types**: NEVER use `Function`, `object`, or `{}`. Use specific function signatures or records.
+- **Ban Non-Null Assertion**: NEVER use the `!` operator. Use proper narrowing or optional chaining.
+- **Prefer `satisfies`**: Use `satisfies` instead of type assertions (`as`) to preserve type information while ensuring a match.
+- **Readonly**: Use `Readonly<T>` or `readonly` properties whenever possible to enforce immutability at the type level.
+
+```typescript
+// BAD
+const data = value as MyType;
+const item = list.find(i => i.id === id)!;
+
+// GOOD
+const data = value satisfies MyType;
+const item = list.find(i => i.id === id) ?? defaultItem;
+const config: Readonly<{ port: number }> = { port: 8080 };
+```
+
+## 3. Functions & Control Flow
+
+- **Explicit Return Types**: ALWAYS provide explicit return type annotations for all functions (including arrow functions).
+- **Mandatory Braces**: ALWAYS use braces `{}` for all control flow blocks (`if`, `for`, `while`), even for single-line statements.
+- **Descriptive Naming**: Use noun-based, descriptive names. Avoid single-letter variables like `e`, `i`, `v`.
+
+```typescript
+// BAD
+if (ready) doWork();
+const add = (a: number, b: number) => a + b;
+
+// GOOD
+if (ready) {
+  doWork();
+}
+const add = (a: number, b: number): number => {
+  return a + b;
+};
+```
+
+## 4. Error Handling
+
+- **Typed Catch**: ALWAYS type catch parameters as `unknown`. NEVER leave them untyped (which defaults to `any`).
+- **Narrowing**: Use type guards or `instanceof Error` to narrow `unknown` errors before accessing properties.
+- **Error Cause**: When wrapping errors, use the `cause` property to preserve the original stack trace.
+
+```typescript
+// GOOD
+try {
+  await fetchData();
+} catch (error: unknown) {
+  if (error instanceof Error) {
+    throw new Error("Failed to fetch", { cause: error });
+  }
+}
+```
+
+## 5. Architecture & Design
+
+- **`interface` vs `type`**: Use `interface` for object shapes/classes and `type` for unions, intersections, and aliases.
+- **Discriminated Unions**: ALWAYS use discriminated unions (with a common `type` or `kind` field) for complex state management.
+- **Enum Alternatives**: Avoid `enum`. Use `const` objects with `as const` or string unions.
+- **Type Composition**: Prefer composing types via intersections or utility types (`Pick`, `Omit`, `Partial`) over duplicating shapes.
+
+For the full set of 50+ detailed rules, installation instructions, and automation scripts, visit the official package:
+[hardwired-skill-typescript on npm](https://www.npmjs.com/package/hardwired-skill-typescript)

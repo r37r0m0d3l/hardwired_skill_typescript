@@ -6,8 +6,7 @@ If a rule conflicts with explicit project requirements, project requirements win
 ## Scope / How to use
 
 - This document (`principles.md`) is the **single source of truth**.
-- If you need to change rules, **edit this file first**, then update `AGENTS.md`, `CLAUDE.md`, `CURSOR.md`, `.github/copilot-instructions.md`, and
-  `rulebook.yaml` to match.
+- If you need to change rules, **edit this file first**, then update `rulebook.yaml` and the templates in the `templates/` directory to match.
 
 ## Core Rules
 
