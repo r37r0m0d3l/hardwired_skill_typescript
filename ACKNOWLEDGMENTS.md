@@ -20,7 +20,7 @@ Below is the categorized list of the TypeScript conventions injected by this ski
 
 ### 📐 Code Architecture and Modeling
 
-- **[Branded / Nominal Types](./rules/discretion_branded_types.md):** Implements opaque type patterns to prevent accidental mixing of primitive types (e.g., UserId vs OrderId).
+- **[Branded / Nominal Types](./rules/discretion_branded_types.md):** Implements opaque type patterns to prevent accidental mixing of primitive types (e.g., UserId vs. OrderId).
 - **[Discriminated Unions](./rules/prefer_discriminated_unions.md):** Encourages clear, safe object variants.
 - **[Enum Alternative](./rules/alternative_to_enum.md):** Uses safer modern structures over native TypeScript enums.
 - **[No `namespace` or `module`](./rules/ban_namespace_or_module.md):** Bans legacy modules in favor of standard ES imports.
@@ -39,6 +39,7 @@ Below is the categorized list of the TypeScript conventions injected by this ski
 - **[Prefer Type Definitions over Inference](./rules/prefer_type_definitions_over_type_inference.md):** Favors explicit declarations for contracts.
 - **[Self-Explanatory & Explicit Typing](./rules/use_explicit_naming_and_typing.md):** Combines clear variable naming with explicit types.
 - **[Use Error Cause](./rules/use_error_cause.md):** Encourages the use of the `cause` property when rethrowing errors to preserve original exception stack traces and context.
+- **[Use region comments](./rules/use_region.md):** Use region comments to fold and organize code.
 
 ### ⚡ Modern TypeScript Features
 

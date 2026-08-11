@@ -1,5 +1,11 @@
 # 📝 Changelog
 
+## [1.0.7]
+
+### Updates
+
+- 📄 **[Use Regions](./rules/use_region.md):** Use region comments (`//#region` and `//#endregion`) to fold and organize code.
+
 ## [1.0.6]
 
 ### Updates

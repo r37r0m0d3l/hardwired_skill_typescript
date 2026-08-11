@@ -52,5 +52,6 @@ files:
   - rules/use_explicit_naming_and_typing.md
   - rules/use_import_of_native_modules.md
   - rules/use_readonly_where_possible.md
+  - rules/use_region.md
   - rules/validate_at_runtime.md
   - rules/validate_with_never.md
