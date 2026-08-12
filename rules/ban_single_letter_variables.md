@@ -10,7 +10,7 @@
 
 **Scope:**
 
-- `*.ts`, `*.js`, `*.tsx`, `*.jsx`
+- `*.ts`
 
 **Related:**
 
