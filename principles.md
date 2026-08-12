@@ -46,6 +46,6 @@ If a rule conflicts with explicit project requirements, project requirements win
 - [Use Exhaustive Checks With never](./rules/validate_with_never.md)
 - [Use Type Predicates for Reusable Narrowing](./rules/typing_return_type.md)
 - [Use `as const` for Configuration and Constants](./rules/use_as_const.md)
-- [Use region comments](./rules/use_region.md)
+- [Use Region comments](./rules/use_region.md)
 - [Validate External Data at Runtime](./rules/validate_at_runtime.md)
 - [`interface` vs `type`](./rules/discretion_interface_vs_type.md)

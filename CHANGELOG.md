@@ -1,10 +1,18 @@
 # 📝 Changelog
 
+## [1.0.8]
+
+### Updates
+
+- 📄 **[Enum Alternative](./rules/alternative_to_enum.md):** Enhanced reasoning with focus on native type-stripping support (Node.js, Deno, Bun) and improved implementation examples.
+- 📄 **[Avoid Single-Letter Variable Names](./rules/ban_single_letter_variables.md):** Narrowed rule scope to TypeScript files only.
+- 📄 **[Use Region Comments](./rules/use_region.md):** Renamed rule for better clarity across documentation.
+
 ## [1.0.7]
 
 ### Updates
 
-- 📄 **[Use Regions](./rules/use_region.md):** Use region comments (`//#region` and `//#endregion`) to fold and organize code.
+- 📄 **[Use Region Comments](./rules/use_region.md):** Use region comments (`//#region` and `//#endregion`) to fold and organize code.
 
 ## [1.0.6]
 
