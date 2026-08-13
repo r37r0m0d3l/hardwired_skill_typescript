@@ -229,7 +229,7 @@ class SkillInstaller {
 	}
 
 	private transferFiles(targetDir: string): void {
-		const allowedExtensions: Array<string> = [".json", ".json5", ".jsonc", ".md", ".mdx", ".txt", ".yaml", ".yml"];
+		const allowedExtensions: Array<string> = [".json", ".json5", ".jsonc", ".md", ".mdc", ".mdx", ".txt", ".yaml", ".yml"];
 		const files: Array<string> = this
 			//
 			.walk(this.packageRoot)
