@@ -1,15 +1,15 @@
-import {execSync} from "node:child_process";
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import * as tar from "tar";
 
 export function run(cmd, opts = {}) {
 	console.log(`> ${cmd}`);
-	return execSync(cmd, {stdio: "inherit", ...opts});
+	return execSync(cmd, { stdio: "inherit", ...opts });
 }
 
 export async function installPackedArchive(ctx, repoRoot) {
-	const packOutput = execSync("npm pack", {cwd: repoRoot}).toString().trim();
+	const packOutput = execSync("npm pack", { cwd: repoRoot }).toString().trim();
 	const packedFile = packOutput.split(/\r?\n/).pop();
 	if (!packedFile) throw new Error("npm pack did not produce an archive");
 	ctx.src = path.join(repoRoot, packedFile);
@@ -17,7 +17,7 @@ export async function installPackedArchive(ctx, repoRoot) {
 
 	ctx.testPkg = path.join(ctx.testDir, "package.json");
 	if (!fs.existsSync(ctx.testPkg)) {
-		fs.writeFileSync(ctx.testPkg, JSON.stringify({name: "test-temp", version: "1.0.0", private: true}, null, 2));
+		fs.writeFileSync(ctx.testPkg, JSON.stringify({ name: "test-temp", version: "1.0.0", private: true }, null, 2));
 		ctx.createdTestPkg = true;
 		console.log(`Created minimal package.json in test folder: ${ctx.testPkg}`);
 	}
@@ -29,17 +29,17 @@ export async function installPackedArchive(ctx, repoRoot) {
 
 	ctx.extractDir = path.join(ctx.testDir, ".extract_tmp");
 	try {
-		fs.rmSync(ctx.extractDir, {recursive: true, force: true});
+		fs.rmSync(ctx.extractDir, { recursive: true, force: true });
 	} catch (_error) {
 		// ignore
 	}
-	fs.mkdirSync(ctx.extractDir, {recursive: true});
-	await tar.x({file: ctx.destPacked, cwd: ctx.extractDir});
+	fs.mkdirSync(ctx.extractDir, { recursive: true });
+	await tar.x({ file: ctx.destPacked, cwd: ctx.extractDir });
 	const packageDir = path.join(ctx.extractDir, "package");
-	const targetDir = path.join(ctx.testDir, "node_modules", "hardwired-skill-typescript");
-	fs.mkdirSync(path.dirname(targetDir), {recursive: true});
+	const targetDir = path.join(ctx.testDir, "node_modules", "hardwired-skill-mikroorm");
+	fs.mkdirSync(path.dirname(targetDir), { recursive: true });
 	try {
-		fs.rmSync(targetDir, {recursive: true, force: true});
+		fs.rmSync(targetDir, { recursive: true, force: true });
 	} catch (_error) {
 		// ignore
 	}
@@ -53,7 +53,7 @@ export async function installPackedArchive(ctx, repoRoot) {
 	console.log(`Extracted package into ${targetDir}`);
 
 	const binDir = path.join(ctx.testDir, "node_modules", ".bin");
-	fs.mkdirSync(binDir, {recursive: true});
+	fs.mkdirSync(binDir, { recursive: true });
 	const cmdShim = path.join(binDir, "hardwired-install-typescript.cmd");
 	const cmdContent = `@echo off\nnode "%~dp0\\..\\hardwired-skill-typescript\\bin\\install.js" %*\n`;
 	fs.writeFileSync(cmdShim, cmdContent);
@@ -66,7 +66,7 @@ export async function installPackedArchive(ctx, repoRoot) {
 	}
 
 	try {
-		fs.rmSync(ctx.extractDir, {recursive: true, force: true});
+		fs.rmSync(ctx.extractDir, { recursive: true, force: true });
 	} catch (_error) {
 		//
 	}

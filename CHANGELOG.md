@@ -1,5 +1,12 @@
 # 📝 Changelog
 
+## [1.0.9]
+
+### Updates
+
+- Install skript.
+- `README.md` with link to **[`hardwired-skill-mikroorm`](https://www.npmjs.com/package/hardwired-skill-mikroorm)**.
+
 ## [1.0.8]
 
 ### Updates

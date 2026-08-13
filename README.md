@@ -21,6 +21,10 @@ A reusable, configurable skill that injects strict TypeScript coding rules into 
 
 Enforce immutability, type safety, strict linting, and coding standards across every LLM-based coding assistant—**Cursor**, **Claude Code**, **GitHub Copilot**, **Windsurf**, **Codex**, and more—via `AGENTS.md`, `CLAUDE.md`, and Copilot instructions etc.
 
+## 🔗 Related Skills
+
+* **[`hardwired-skill-mikroorm`](https://www.npmjs.com/package/hardwired-skill-mikroorm)** – MikroORM skill library with strict rules.
+
 ## ✨ Features
 
 * **🎯 *Opinionated TypeScript Rules***\
