@@ -1,10 +1,16 @@
 # 📝 Changelog
 
+## [1.0.10]
+
+### Updates
+
+- 📄 **[Enum Alternative](./rules/alternative_to_enum.md):** Enhanced reasoning with focus on native type-stripping support (Node.js, Deno, Bun) and improved implementation examples.
+
 ## [1.0.9]
 
 ### Updates
 
-- Install skript.
+- Install script.
 - `README.md` with link to **[`hardwired-skill-mikroorm`](https://www.npmjs.com/package/hardwired-skill-mikroorm)**.
 
 ## [1.0.8]
