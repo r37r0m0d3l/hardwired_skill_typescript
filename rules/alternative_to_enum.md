@@ -20,6 +20,7 @@
 
 - NEVER use the TypeScript `enum` or `const enum` keywords.
 - ALWAYS use plain JavaScript object literals paired with an `as const` assertion to declare fixed sets of constants.
+- ALWAYS define domain status sets as `as const` numeric lookup objects frozen with `Object.freeze()`.
 - ALWAYS derive value union types using `(typeof ConstObject)[keyof typeof ConstObject]`.
 - ALWAYS derive key union types using `keyof typeof ConstObject`.
 
@@ -66,6 +67,7 @@ export const NameEnum = {
 	KEY_TWO: "TWO",
 	KEY_THREE: "THREE",
 } as const;
+Object.freeze(NameEnum); // prevents runtime mutation of enum lookup constants
 // Derives value union type: 1 | "TWO" | "THREE"
 export type NameType = (typeof NameEnum)[keyof typeof NameEnum];
 // Derives key union type: "KEY_ONE" | "KEY_TWO" | "KEY_THREE"
