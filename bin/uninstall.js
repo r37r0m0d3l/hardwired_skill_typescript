@@ -184,13 +184,7 @@ class SkillUninstaller {
                 cursormd: { type: "boolean", default: false },
             },
         });
-        const hasArgs = Boolean(values.all) ||
-            Boolean(values.agentsmd) ||
-            Boolean(values.copilotdir) ||
-            Boolean(values.claudemd) ||
-            Boolean(values.agentdir) ||
-            Boolean(values.cursordir) ||
-            Boolean(values.cursormd);
+        const hasArgs = Boolean(values.all) || Boolean(values.agentsmd) || Boolean(values.copilotdir) || Boolean(values.claudemd) || Boolean(values.agentdir) || Boolean(values.cursordir) || Boolean(values.cursormd);
         const targets = { ...values };
         let shouldLinkViaAgentRouter = false;
         if (hasArgs) {
@@ -292,9 +286,7 @@ class SkillUninstaller {
         console.log(`\n💯 [${SKILL_NAME}] Uninstallation successful.`);
     }
 }
-new SkillUninstaller()
-    .execute()
-    .catch((error) => {
+new SkillUninstaller().execute().catch((error) => {
     console.error(`[${SKILL_NAME}] Unhandled error during uninstallation:`, error?.message || error);
     process.exit(1);
 });

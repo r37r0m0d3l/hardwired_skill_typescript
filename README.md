@@ -23,18 +23,18 @@ Enforce immutability, type safety, strict linting, and coding standards across e
 
 ## 🔗 Related Skills
 
-* **[`hardwired-skill-mikroorm`](https://www.npmjs.com/package/hardwired-skill-mikroorm)** – MikroORM skill library with strict rules.
+- **[`hardwired-skill-mikroorm`](https://www.npmjs.com/package/hardwired-skill-mikroorm)** – MikroORM skill library with strict rules.
 
 ## ✨ Features
 
-* **🎯 *Opinionated TypeScript Rules***\
-Curated best practices, strict type safety, and clean code conventions.
-* **🔌 *Multi-Target Injection***\
-Native support for `AGENTS.md`, `CURSOR.md`, `CLAUDE.md`, Copilot instructions, and dedicated agent directories.
-* **⚡ *Interactive CLI***\
-Pick and choose which rules and formats to deploy via terminal prompts.
-* **📦 *Shared Dependency***\
-Install via npm to keep your AI prompts synchronized across multiple repositories.
+- **🎯 _Opinionated TypeScript Rules_**\
+  Curated best practices, strict type safety, and clean code conventions.
+- **🔌 _Multi-Target Injection_**\
+  Native support for `AGENTS.md`, `CURSOR.md`, `CLAUDE.md`, Copilot instructions, and dedicated agent directories.
+- **⚡ _Interactive CLI_**\
+  Pick and choose which rules and formats to deploy via terminal prompts.
+- **📦 _Shared Dependency_**\
+  Install via npm to keep your AI prompts synchronized across multiple repositories.
 
 ## 📍 What it does
 
@@ -51,16 +51,19 @@ Your LLM was trained on plenty of code like this. This skill guides AI to fix ob
 ## 📦 Installation
 
 ### 1. Install as a dev dependency
+
 ```shell
 npm install -D hardwired-skill-typescript
 ```
 
 ### 2. Install everything (for experimentation)
+
 ```shell
 npx hardwired-install-typescript --all
 ```
 
 ### 3. Targeted universal setups
+
 Install `.agent/` directory and `AGENTS.md` file for **universal** AI configurations (for those agents that support it):
 
 ```shell
@@ -68,6 +71,7 @@ npx hardwired-install-typescript --agentdir --agentsmd
 ```
 
 ### 4. Uninstall (Clean up)
+
 If you need to remove the skill from your project:
 
 ```shell
@@ -79,10 +83,10 @@ For **all** CLI options, flags, and target-specific setup see [**INSTALL.md**](.
 
 ## 📖 Documentation and Principles
 
-* The single source of truth for all rules is [`principles.md`](./principles.md).
-* For the full categorized rules reference see [*ACKNOWLEDGMENTS](./ACKNOWLEDGMENTS.md).
+- The single source of truth for all rules is [`principles.md`](./principles.md).
+- For the full categorized rules reference see [*ACKNOWLEDGMENTS](./ACKNOWLEDGMENTS.md).
 
 ## ⚙️ Prerequisites
 
-* **Node.js**: `^22.18.0` or higher (recommended)
-* **TypeScript**: `^5.0.0` or higher (to support features like `satisfies`)
+- **Node.js**: `^22.18.0` or higher (recommended)
+- **TypeScript**: `^5.0.0` or higher (to support features like `satisfies`)

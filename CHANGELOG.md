@@ -1,5 +1,14 @@
 # 📝 Changelog
 
+## [1.0.11]
+
+### Updates
+
+- 📄 **[Enum Alternative](./rules/alternative_to_enum.md):**
+  - Enforcement changed from "MUST" to "MAY"
+  - Added `toString` method to separate implementation from basic plain object.
+
+
 ## [1.0.10]
 
 ### Updates

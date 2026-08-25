@@ -1,8 +1,8 @@
-# Enum Alternative
+# Enum Alternative (Smart Enum)
 
 **Title:**
 
-- Avoid TypeScript `enum` in favor of const object literals and type mappings for native runtime execution, predictable serialization, and clean tree-shaking.
+- Avoid TypeScript `enum` in favor of Smart Const Object Enums with type mappings and non-enumerable `toString` methods for clean runtime execution, safe `JSON.stringify` logging, and type safety.
 
 **ID:**
 
@@ -19,16 +19,18 @@
 **Rule:**
 
 - NEVER use the TypeScript `enum` or `const enum` keywords.
-- ALWAYS use plain JavaScript object literals paired with an `as const` assertion to declare fixed sets of constants.
-- ALWAYS define domain status sets as `as const` numeric lookup objects frozen with `Object.freeze()`.
-- ALWAYS derive value union types using `(typeof ConstObject)[keyof typeof ConstObject]`.
+- ALWAYS define fixed sets of constants using plain JavaScript object literals with an `as const` assertion.
+- ALWAYS augment the const object with a non-enumerable, non-writable, non-configurable `toString()` method returning `JSON.stringify(this)` via `Object.defineProperty()`.
+- ALWAYS freeze the resulting object using `Object.freeze()`.
 - ALWAYS derive key union types using `keyof typeof ConstObject`.
+- ALWAYS derive value union types using `(typeof ConstObject)[KeyType]`.
 
 **Reason:**
 
-- **Erasable Syntax / Type Stripping Compatibility:** TypeScript `enum` generates runtime IIFEs (Immediately Invoked Function Expressions) that fail under native Node.js type-stripping (`--experimental-strip-types`, `--experimental-transform-types`), Deno, Bun, and the TC39 Stage 1 Type Annotations proposal.
-- **Reverse Mapping Pollution:** Numeric `enum` definitions generate bidirectional mappings (`{ "1": "KEY", "KEY": 1 }`), polluting `Object.keys()`, `JSON.stringify()`, and iteration.
-- **Serialization & Interop:** Const object literals are plain, standard JavaScript primitives that serialize deterministically across network boundaries, work seamlessly with third-party libraries, and tree-shake cleanly.
+- **Erasable Syntax / Type Stripping Compatibility:** TypeScript `enum` generates runtime IIFEs that fail under native Node.js type-stripping (`--experimental-strip-types`, `--experimental-transform-types`), Deno, Bun, and the TC39 Stage 1 Type Annotations proposal.
+- **Reverse Mapping Pollution:** Numeric TypeScript `enum` definitions generate bidirectional mappings (`{ "1": "KEY", "KEY": 1 }`), polluting `Object.keys()`, iteration, and JSON serialization.
+- **Smart JSON/String Serialization:** Defining a non-enumerable `toString()` method ensures seamless string conversion and deterministic logging (`JSON.stringify`) without polluting `Object.keys()` or iteration loops.
+- **Runtime Immutability:** Combining `as const`, `Object.defineProperty()`, and `Object.freeze()` guarantees strict immutability both at compile-time and runtime.
 
 **Exceptions:**
 
@@ -36,7 +38,7 @@
 
 **Enforcement:**
 
-- MUST
+- MAY
 
 **Category:**
 
@@ -48,13 +50,13 @@
 
 ```typescript
 // Uses non-standard TypeScript syntax that generates runtime IIFEs and breaks native type-stripping runtimes.
-export enum NameEnum {
-	KEY_ONE = 1,
-	KEY_TWO = "TWO",
-	KEY_THREE = "THREE",
+export enum DirectionEnum {
+	Down = "⬇️",
+	Left = "⬅️",
+	Right = "➡️",
+	Up = "⬆️",
 }
-// Numeric enum values generate reverse mappings ({ "1": "KEY_ONE", "KEY_ONE": 1 }).
-// Object.keys(NameEnum) produces ["1", "KEY_ONE", "KEY_TWO", "KEY_THREE"], breaking iteration and serialization.
+// Numeric enums pollute reverse mappings ({ "1": "KEY_ONE", "KEY_ONE": 1 }), breaking Object.keys() and standard JSON serialization.
 ```
 
 ## ✅ GOOD
@@ -62,18 +64,24 @@ export enum NameEnum {
 ```typescript
 // Uses standard JavaScript object literal with 'as const' compile-time immutability.
 // Supports numeric, string, or mixed primitive values seamlessly.
-export const NameEnum = {
-	KEY_ONE: 1,
-	KEY_TWO: "TWO",
-	KEY_THREE: "THREE",
+const Direction = {
+	Down: "⬇️",
+	Left: "⬅️",
+	Right: "➡️",
+	Up: "⬆️",
 } as const;
-Object.freeze(NameEnum); // prevents runtime mutation of enum lookup constants
-// Derives value union type: 1 | "TWO" | "THREE"
-export type NameType = (typeof NameEnum)[keyof typeof NameEnum];
-// Derives key union type: "KEY_ONE" | "KEY_TWO" | "KEY_THREE"
-export type NameKeyType = keyof typeof NameEnum;
-// Standard JavaScript that works cleanly with native type-stripping and type checkers.
-function processValue(value: NameType): void {
-	console.log(value);
-}
+// Defines a non-enumerable `toString` method to prevent `Object.keys()` pollution while enabling JSON stringification.
+export const DirectionEnum = Object.defineProperty(Direction, "toString", {
+	configurable: false,
+	enumerable: false,
+	value() {
+		return JSON.stringify(this);
+	},
+	writable: false,
+});
+Object.freeze(DirectionEnum); // Prevents runtime mutation of the lookup object.
+// Derives key union type: 'Down' | 'Left' | 'Right' | 'Up'
+export type DirectionEnumKeyType = keyof typeof Direction;
+// Derives value union type: '⬇️' | '⬅️' | '➡️' | '⬆️'
+export type DirectionEnumValueType = (typeof Direction)[DirectionEnumKeyType];
 ```

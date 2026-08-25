@@ -99,12 +99,12 @@ npx hardwired-uninstall-typescript --all
 
 ### 📊 Uninstallation Options Summary
 
-| Target File / Directory | CLI Flag       | Uninstallation Behavior                                  |
-| :---------------------- | :------------- | :------------------------------------------------------- |
-| **All Targets**         | `--all`        | Removes all skill files and references from all paths    |
-| **Universal Agents**    | `--agentdir`   | Removes the `.agent/skills/hardwired-skill-typescript`   |
-| **GitHub Copilot**      | `--copilotdir` | Removes the `.github/skills/hardwired-skill-typescript`  |
-| **Cursor**              | `--cursordir`  | Removes the `.cursor/rules/hardwired-skill-typescript`   |
+| Target File / Directory | CLI Flag       | Uninstallation Behavior                                 |
+| :---------------------- | :------------- | :------------------------------------------------------ |
+| **All Targets**         | `--all`        | Removes all skill files and references from all paths   |
+| **Universal Agents**    | `--agentdir`   | Removes the `.agent/skills/hardwired-skill-typescript`  |
+| **GitHub Copilot**      | `--copilotdir` | Removes the `.github/skills/hardwired-skill-typescript` |
+| **Cursor**              | `--cursordir`  | Removes the `.cursor/rules/hardwired-skill-typescript`  |
 | **AGENTS.md**           | `--agentsmd`   | Removes skill-specific references from `AGENTS.md`      |
 | **CLAUDE.md**           | `--claudemd`   | Removes skill-specific references from `CLAUDE.md`      |
 | **CURSOR.md**           | `--cursormd`   | Removes skill-specific references from `CURSOR.md`      |

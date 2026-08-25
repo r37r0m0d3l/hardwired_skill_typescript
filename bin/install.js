@@ -149,7 +149,7 @@ class SkillInstaller {
         }
     }
     transferFiles(targetDir) {
-        const allowedExtensions = [".json", ".json5", ".jsonc", ".md", ".mdx", ".txt", ".yaml", ".yml"];
+        const allowedExtensions = [".json", ".json5", ".jsonc", ".md", ".mdc", ".mdx", ".txt", ".yaml", ".yml"];
         const files = this
             .walk(this.packageRoot)
             .filter((fileName) => allowedExtensions.some((fileExtension) => fileName.toLowerCase().endsWith(fileExtension)));

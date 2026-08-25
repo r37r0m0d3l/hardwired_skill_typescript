@@ -138,14 +138,7 @@ class SkillUninstaller {
 		}
 	}
 
-	private getProcessedTemplate(
-		templatesSrcDir: string,
-		templatePath: string,
-		destPath: string,
-		principlesPath: string,
-		rulesPath: string,
-		routerPath: string | null = null,
-	): string {
+	private getProcessedTemplate(templatesSrcDir: string, templatePath: string, destPath: string, principlesPath: string, rulesPath: string, routerPath: string | null = null): string {
 		const fullTemplatePath: string = join(templatesSrcDir, templatePath);
 		if (!existsSync(fullTemplatePath)) return "";
 		const content: string = readFileSync(fullTemplatePath, "utf8");
@@ -222,13 +215,7 @@ class SkillUninstaller {
 		});
 
 		const hasArgs: boolean =
-			Boolean(values.all) ||
-			Boolean(values.agentsmd) ||
-			Boolean(values.copilotdir) ||
-			Boolean(values.claudemd) ||
-			Boolean(values.agentdir) ||
-			Boolean(values.cursordir) ||
-			Boolean(values.cursormd);
+			Boolean(values.all) || Boolean(values.agentsmd) || Boolean(values.copilotdir) || Boolean(values.claudemd) || Boolean(values.agentdir) || Boolean(values.cursordir) || Boolean(values.cursormd);
 		const targets: any = { ...values };
 		let shouldLinkViaAgentRouter: boolean = false;
 
@@ -358,9 +345,7 @@ class SkillUninstaller {
 	}
 }
 
-new SkillUninstaller()
-	.execute()
-	.catch((error: any) => {
-		console.error(`[${SKILL_NAME}] Unhandled error during uninstallation:`, error?.message || error);
-		process.exit(1);
-	});
+new SkillUninstaller().execute().catch((error: any) => {
+	console.error(`[${SKILL_NAME}] Unhandled error during uninstallation:`, error?.message || error);
+	process.exit(1);
+});
