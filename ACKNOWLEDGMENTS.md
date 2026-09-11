@@ -20,6 +20,7 @@ Below is the categorized list of the TypeScript conventions injected by this ski
 
 ### 📐 Code Architecture and Modeling
 
+- **[Avoid Internal Barrel Files](./rules/avoid_barrel_files.md):** Avoid internal barrel files in favor of explicit imports.
 - **[Branded / Nominal Types](./rules/discretion_branded_types.md):** Implements opaque type patterns to prevent accidental mixing of primitive types (e.g., UserId vs. OrderId).
 - **[Discriminated Unions](./rules/prefer_discriminated_unions.md):** Encourages clear, safe object variants.
 - **[Enum Alternative](./rules/alternative_to_enum.md):** Uses safer modern structures over native TypeScript enums.

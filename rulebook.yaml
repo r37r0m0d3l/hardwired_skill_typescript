@@ -17,6 +17,7 @@ files:
   - CURSOR.md
   - principles.md
   - rules/alternative_to_enum.md
+  - rules/avoid_barrel_files.md
   - rules/ban_array_reverse.md
   - rules/ban_array_sort.md
   - rules/ban_array_splice.md

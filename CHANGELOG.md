@@ -1,13 +1,18 @@
 # 📝 Changelog
 
+## [1.0.12]
+
+### Added
+
+- 📄 **[Avoid Internal Barrel Files](./rules/avoid_barrel_files.md):** - avoid internal barrel files in favor of explicit imports.
+
 ## [1.0.11]
 
 ### Updates
 
 - 📄 **[Enum Alternative](./rules/alternative_to_enum.md):**
   - Enforcement changed from "MUST" to "MAY"
-  - Added `toString` method to separate implementation from basic plain object.
-
+  - Added `toString` method to separate implementation from a basic plain object.
 
 ## [1.0.10]
 

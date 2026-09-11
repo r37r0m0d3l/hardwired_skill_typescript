@@ -12,6 +12,7 @@ If a rule conflicts with explicit project requirements, project requirements win
 
 - [Array Typing](./rules/typing_array.md)
 - [Async / Promise Typing](./rules/typing_async.md)
+- [Avoid Internal Barrel Files](./rules/avoid_barrel_files.md)
 - [Avoid Loose Types (`Function`, `object`, `{}`)](./rules/ban_loose_types.md)
 - [Avoid Non-Null Assertion (`!`)](./rules/ban_non_null_assertion.md)
 - [Avoid Single-Letter Variable Names](./rules/ban_single_letter_variables.md)
